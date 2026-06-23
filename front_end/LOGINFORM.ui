@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>1000</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1390</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1400</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(82, 115, 227);
+border-radius: 2px;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>900</width>
+     <height>979</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>986</height>
+    </size>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>1000</width>
+        <height>848</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1380</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(82, 115, 227);
+border-radius: 2px;
+height: 400px;
+width: 500px;</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QFrame" name="frame">
+         <property name="minimumSize">
+          <size>
+           <width>1216</width>
+           <height>778</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>1222</width>
+           <height>781</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(230, 230, 230);
+border-radius: 10px;
+background-position: center;
+background-repeat: no-repeat;
+box-shadow: 15px 25px 30px rgba(0, 0, 0, 100);
+</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1221</width>
+            <height>781</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius: 10px;
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../static.qrc">:/images/images/Mask Group 3.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QFrame" name="frame_2">
+          <property name="geometry">
+           <rect>
+            <x>560</x>
+            <y>0</y>
+            <width>652</width>
+            <height>466</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(230, 230, 230);
+border-radius: 10px;</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>99</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>88</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>logo</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="minimumSize">
+              <size>
+               <width>634</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>150</width>
+               <height>71</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font-weight: 900;
+font-size: 61px;
+padding:2px;</string>
+             </property>
+             <property name="text">
+              <string>NGASSAM OPTIQUE</string>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="label_4">
+             <property name="minimumSize">
+              <size>
+               <width>264</width>
+               <height>38</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>271</width>
+               <height>36</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>SimSun-ExtB</family>
+               <pointsize>-1</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font-weight: 900;
+font-size: 20px;
+padding:2px;</string>
+             </property>
+             <property name="text">
+              <string>welcome To GSB soft</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="user_details">
+             <property name="minimumSize">
+              <size>
+               <width>610</width>
+               <height>222</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>567</width>
+               <height>214</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <layout class="QFormLayout" name="formLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>52</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>58</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="../static.qrc">:/logo/images/user_filled_50px.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="lineEdit_3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>500</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>500</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(255, 255, 255);
+color: black;
+border-bottom: 2px solid gray;</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>        enter user name/ nom d'utilisateur</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_6">
+                  <property name="minimumSize">
+                   <size>
+                    <width>52</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>30</width>
+                    <height>58</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: red;</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="../static.qrc">:/logo/images/password_24px.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="lineEdit_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>500</width>
+                    <height>44</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>500</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(255, 255, 255);
+color: black;
+border-bottom: 2px solid gray;</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>        password/ mote de pass</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QPushButton" name="pushButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>51</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>55</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>SimSun-ExtG</family>
+                  <pointsize>18</pointsize>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(82, 115, 227);
+color: white;
+font-weight: 900px;</string>
+                </property>
+                <property name="text">
+                 <string>LOGIN</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../static.qrc"/>
+  <include location="../../../.designer/static.qrc"/>
+ </resources>
+ <connections/>
+</ui>

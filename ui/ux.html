@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Optical UI - Nunito + Inter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Inter:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #dddce1;
+      background-color: #cacaca;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .cards-cols {
+      background: #dddce1;
+      border-radius: 14px;
+      padding: 20px;
+      width: 290px;
+      height: 140px;
+      transition: 0.4s;
+      box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.6),
+        inset -1px -1px 1px rgba(12, 13, 18, 0.06),
+        -1px -1px 4px rgba(255, 255, 255, 0.6),
+        -2px -2px 8px rgba(255, 255, 255, 0.6),
+        1px 1px 1px rgba(12, 13, 18, 0.06),
+        1px 1px 4px rgba(12, 13, 18, 0.06),
+        2px 2px 8px rgba(12, 13, 18, 0.6);
+        background-color: #F5F6FA;
+        color: rgba(30, 61, 89, 100%)
+    }
+
+    .cards-cols h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 18px;
+      color: #0D47A1;
+      margin-bottom: 10px;
+    }
+
+    .cards-cols p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .cards-cols:hover {
+      transform: translateY(-3px);
+      background: #4682B4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cards-cols">
+    <h3>Inventory Status</h3>
+    <p>15 items low in stock. Update inventory.</p>
+  </div>
+
+  <div class="cards-cols">
+    <h3>Appointments</h3>
+    <p>Next: 10:00 AM – John Doe</p>
+  </div>
+
+</body>
+</html>
+
+
+################################################################
+/* ========== MAIN WINDOW BACKGROUND ========== */
+#MainWindow {
+    background-color: #E0E5EC;
+}
+
+/* ========== MENU BAR (Top Bar) ========== */
+QMenuBar {
+    background-color: #E0E5EC;
+    padding: 6px 10px;
+    color: #3E4C5E;
+    font: 600 9pt "Segoe UI";
+    border-bottom: 1px solid #cfd6de;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 6px 15px;
+    margin: 2px 5px;
+    border-radius: 8px;
+}
+
+QMenuBar::item:selected {
+    background-color: #D1D9E6;
+}
+
+QMenuBar::item:pressed {
+    background-color: #C5CDD8;
+}
+
+/* ========== MENU POPUP ========== */
+QMenu {
+    background-color: #E0E5EC;
+    border: 1px solid #d2d8e0;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+QMenu::item {
+    padding: 8px 20px;
+    color: #333;
+    border-radius: 6px;
+}
+
+QMenu::item:selected {
+    background-color: #D1D9E6;
+}
+
+QMenu::separator {
+    height: 1px;
+    background: #c9cdd2;
+    margin: 4px 0;
+}
+
+/* ========== ICON-ONLY MENU SIDEBAR ========== */
+#icon_only_widget {
+    background-color: #E0E5EC;
+    border-right: 1px solid #d3dbe5;
+}
+
+#icon_only_widget QPushButton, QLabel {
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    margin: 5px;
+    background-color: #E0E5EC;
+    box-shadow: 3px 3px 8px #bec4cc, -3px -3px 8px #ffffff;
+}
+
+#icon_only_widget QPushButton:hover {
+    background-color: #d4dae2;
+}
+
+#icon_only_widget QPushButton:checked {
+    background-color: #C5CDD8;
+    color: #2b2b2b;
+}
+
+/* ========== FULL MENU SIDEBAR ========== */
+#full_menu_widget {
+    background-color: #E0E5EC;
+}
+
+#full_menu_widget QPushButton {
+    border: none;
+    border-radius: 15px;
+    text-align: left;
+    padding: 10px 20px;
+    color: #3e4c5e;
+    background-color: #E0E5EC;
+    box-shadow: 4px 4px 10px #bec4cc, -4px -4px 10px #ffffff;
+    margin: 5px;
+}
+
+#full_menu_widget QPushButton:hover {
+    background-color: #d6dce5;
+}
+
+#full_menu_widget QPushButton:checked {
+    background-color: #C5CDD8;
+    color: #1a1a1a;
+}
+
+/* ========== HEADER SECTION ========== */
+#widget {
+    background-color: #E0E5EC;
+    border-bottom: 1px solid #d4dbe4;
+}
+
+/* ========== TOGGLE BUTTON ========== */
+#change_btn {
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: #E0E5EC;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px #bec4cc, -3px -3px 8px #ffffff;
+}
+
+/* ========== SEARCH AREA ========== */
+#search_input {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background-color: #E0E5EC;
+    box-shadow: inset 2px 2px 6px #bec4cc, inset -2px -2px 6px #ffffff;
+    color: #333;
+}
+
+#search_input:focus {
+    background-color: #ffffff;
+}
+
+/* ========== USER BUTTON ========== */
+#user_btn {
+    border: none;
+    background-color: #E0E5EC;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px #bec4cc, -2px -2px 5px #ffffff;
+}
+
+/* ========== GENERAL FRAME NEUMORPHIC ========== */
+QFrame {
+    background-color: #E0E5EC;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 4px 4px 12px #bec4cc, -4px -4px 12px #ffffff;
+}
+
+/* ========== OPTIONAL: QLabel Styling ========== */
+QLabel {
+    color: #333;
+}
+
+
+
+################################################################
+/*= Style for mainwindow START
+  ==================================================== */
+	#MainWindow {
+		background-color: #fff;
+	}
+QMenuBar {
+    background-color: rgb(49, 58, 70); /* Dark background */
+    padding: 5px 10px; /* Adjust padding for better spacing */
+    color: rgb(230, 230, 230); /* Slightly softer white for text */
+    font: 575 9pt "Segoe UI"; /* Use a slightly lighter weight for better readability */
+    border-bottom: 1px solid rgb(60, 70, 85); /* Subtle bottom border for separation */
+}
+
+QMenuBar::item {
+    background: transparent; /* Make menu bar items transparent by default */
+    padding: 5px 15px;
+    margin: 2px 5px; /* Add some margin around items */
+    border-radius: 4px; /* Slightly rounded corners for items */
+}
+
+QMenuBar::item:selected {
+    background-color: rgba(58, 139, 212, 50); /* Secondary Blue (Medium) with slight transparency on selection */
+}
+
+QMenuBar::item:pressed {
+    background-color: rgba(15, 76, 129, 80); /* Dark Blue with slight transparency on press */
+}
+
+QMenu {
+    background-color: rgb(245, 245, 245); /* Light background for the menu */
+    border: 1px solid rgb(200, 200, 200);
+    margin: 2px; /* Small margin around the menu */
+    border-radius: 4px;
+}
+
+QMenu::item {
+    background: transparent;
+    padding: 8px 25px;
+    color: rgb(50, 50, 50);
+}
+
+QMenu::item:selected {
+    background-color: rgba(58, 139, 212, 30); /* Light highlight on selection */
+}
+
+QMenu::item:disabled {
+    color: rgb(150, 150, 150);
+}
+
+QMenu::separator {
+    height: 1px;
+    background: rgb(220, 220, 220);
+    margin: 5px 0;
+}
+
+QMenu::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QMenu::icon {
+    margin-right: 8px;
+}
+  /*QMenuBar{	
+	background-color: rgb(49, 58, 70);
+	padding: 10px;
+	color: rgb(255, 255, 255);
+	font: 700 9pt "Segoe UI";
+}
+
+QMenu:hover {
+    border: 2px solid #3A8BD4; /* Secondary Blue (Medium) *
+    background-color: #E6EDF2; /* Keep background consistent on hover *
+}
+QMenu::chunk {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #3A8BD4, stop:1 #0F4C81); /* Gradient for the chunk
+    border-radius: 8px;
+   transition: background-color 0.3s ease-in-out; 
+}
+*/
+/*= END
+
+
+  ==================================================== */
+
+/*= Style for button to change menu style START
+  ==================================================== */
+	#change_btn {
+		padding: 5px;
+		border: none;
+		width: 30px;
+		height: 30px;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for header widget START
+  ==================================================== */
+	#widget {
+		background-color: #f9fafd;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for menu with icon only START
+  ==================================================== */
+  	/* style for widget */
+	#icon_only_widget {
+		background-color: #313a46;
+		width:50px;
+	}
+
+    /* style for QPushButton and QLabel */
+	#icon_only_widget QPushButton, QLabel {
+		height:50px;
+		border:none;
+		/* border-bottom: 1px solid #b0b0b0; */
+	}
+
+	#icon_only_widget QPushButton:hover {
+		background-color: rgba( 86, 101, 115, 0.5);
+	}
+	#icon_only_widget QPushButton:checked {
+		color: #fff;		
+		background-color: rgb(44, 47, 133);
+		border-radius: 20px;
+	}
+	/* style for logo image */
+	#logo_label_1 {
+		padding: 5px
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for menu with icon and text START
+  ==================================================== */
+	/* style for widget */
+	#full_menu_widget {
+		background-color: #313a46;
+	}
+
+	/* style for QPushButton */
+	#full_menu_widget QPushButton {
+		border:none;
+		border-radius: 3px;
+		text-align: left;
+		padding: 8px 0 8px 15px;
+		color: #788596;
+	}
+
+	#full_menu_widget QPushButton:hover {
+		background-color: rgba( 86, 101, 115, 0.5);
+	}
+
+	#full_menu_widget QPushButton:checked {
+		color: #fff;
+		border-radius: 10px;
+	background-color: rgb(44, 47, 133);
+	}
+
+	/* style for logo image */
+	#logo_label_2 {
+		padding: 5px;
+		color: #fff;
+	}
+
+	/* style for APP title */
+	#logo_label_3 {
+		padding-right: 10px;
+		color: #fff;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for search button START
+  ==================================================== */
+	#search_btn {
+		border: none;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for search input START
+  ==================================================== */
+	#search_input {
+		border: none;
+		padding: 5px 10px;
+	}
+
+	#search_input:focus {
+		background-color: #70B9FE;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for user information button START
+  ==================================================== */
+	#user_btn {
+		border: none;
+	}
+
+/*= END
+  ==================================================== */
+
+
+
+
+
+
+
+
+
+  hello chat
+i am working on whatsapp web automation system using python playwrite. i coded the system already so you will check for bugs in the code or error thet make cause future bugs in the code and fix. we need to make the system to have all the qaulities of a a good software(rubustness, efficient, reliablity, etc) so with you best knowledge understand this code and analyze everthing :
+
+
+import asyncio
+from playwright.async_api import async_playwright
+import csv
+from datetime import datetime
+import random
+
+WHATSAPP_WEB = "https://web.whatsapp.com/"
+
+HELLO = "Hi "
+MEET_AND_GREET = ", hope I find you well\n\n"
+BODY = "(whatever message you want to send)"
+
+CHECK_STRING = "STRING TO SEARCH"
+FILE_TO_OPEN = "whatsapp_automation\leads.csv"
+
+stats = {
+    "sent": 0,
+    "failed": 0,
+    "without_whatsapp": [],
+    "existent_chat": []
+}
+
+def log(message):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{timestamp}] {message}")
+
+def name_formatter(name_and_surname):
+    try:
+        name = name_and_surname.split()[0]
+        return name.replace("_", " ").lower().title()
+    except IndexError:
+        return name_and_surname
+
+async def send_message(page, number, message, name, full_name):
+    try:
+        # 1. Click and fill WhatsApp Web search box (using data-tab="3")
+        search_box = page.locator('//div[@contenteditable="true"][@data-tab="3"]')
+        await search_box.click()
+        await search_box.fill("")  # clear previous input
+        await search_box.fill(number)
+        await asyncio.sleep(2)  # wait for search results  
+
+        # 2. Check if no results found
+        no_results = page.locator('text=No results found')
+        if await no_results.count() > 0:
+            log(f"No WhatsApp account found for {full_name} ({number})")
+            stats["without_whatsapp"].append((name, number))
+            return False
+        
+        # After filling search box
+        await search_box.fill(name)  # if searching by name instead of number
+
+        contact = page.locator(f'//span[@title="{name}"]')
+        await contact.wait_for(timeout=10000)
+        await contact.click()
+                
+
+        # # 3. Click on the contact matching the number (using span[@title="{number}"])
+        # contact = page.locator(f'//span[@title="{number}"]')
+        try:
+            await contact.wait_for(timeout=10000)
+            await contact.click()
+            # wait for message input to appear (data-tab=10)
+            await page.wait_for_selector('//div[@contenteditable="true"][@data-tab="10"]', timeout=15000)
+            await asyncio.sleep(2)
+        except Exception as e:
+            log(f"Failed to open chat for {full_name}: {str(e)}")
+            stats["failed"] += 1
+            return False
+
+        # 4. Check for duplicate message
+        if await page.get_by_text(CHECK_STRING).count() > 0:
+            log(f"{name} already received the message.")
+            stats["existent_chat"].append((name, number))
+            return False
+
+        # 5. Focus message input box and send message
+        message_box = page.locator('//div[@contenteditable="true"][@data-tab="10"]')
+        await message_box.click()
+        await message_box.fill(message)
+        await message_box.press("Enter")
+        await asyncio.sleep(1)
+
+        # 6. Verify message was sent by checking last outgoing message
+        last_msg = page.locator('.message-out').last
+        if await last_msg.count() > 0:
+            last_msg_text = await last_msg.inner_text()
+            if message in last_msg_text:
+                log(f"Successfully sent message to {full_name}.")
+                stats["sent"] += 1
+                return True
+
+        log(f"Message may not have sent to {full_name}")
+        stats["failed"] += 1
+        return False
+
+    except Exception as e:
+        log(f"Error sending to {full_name}: {str(e)}")
+        stats["failed"] += 1
+        return False
+
+async def main():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch_persistent_context(
+            user_data_dir="/home/dario/.config/google-chrome",
+            headless=False
+        )
+        page = await browser.new_page()
+        await page.goto(WHATSAPP_WEB)
+
+        log("Scan WhatsApp Web QR Code to continue...")
+        await page.wait_for_selector('//div[@contenteditable="true"][@data-tab="3"]', timeout=60000)
+        log("QR Code successfully scanned!")
+
+        with open(FILE_TO_OPEN, newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            contacts = [row for row in reader]
+
+        for lead in contacts:
+            try:
+                name = name_formatter(lead[0])
+                number = lead[1]
+                message = HELLO + name + MEET_AND_GREET + BODY
+
+                await send_message(page, number, message, name, lead[0])
+                await asyncio.sleep(random.uniform(1, 2))
+            except IndexError:
+                log(f"Skipping malformed row: {lead}")
+                continue
+
+        log(f"Successfully sent {stats['sent']} messages")
+        log(f"Failed to send {stats['failed']} messages")
+
+        await browser.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+
+
+
+
+
+from PySide6.QtCore import Qt
+
+from contacts_manager import ContactsManager
+
+
+class ContactDialog(QDialog):
+    """Dialog for Add/Edit Contact"""
+
+    def __init__(self, parent=None, contact=None):
+        super().__init__(parent)
+        self.setWindowTitle("Add/Edit Contact")
+        self.contact = contact
+
+        self.layout = QFormLayout(self)
+
+        self.name_input = QLineEdit()
+        self.phone_input = QLineEdit()
+        self.department_input = QLineEdit()
+        self.tag_input = QLineEdit()
+
+        if contact:  # prefill for edit
+            self.name_input.setText(contact[1])
+            self.phone_input.setText(contact[2])
+            self.department_input.setText(contact[3] or "")
+            self.tag_input.setText(contact[4] or "")
+
+        self.layout.addRow("Name:", self.name_input)
+        self.layout.addRow("Phone:", self.phone_input)
+        self.layout.addRow("Department:", self.department_input)
+        self.layout.addRow("Tag:", self.tag_input)
+
+        btn_layout = QHBoxLayout()
+        save_btn = QPushButton("Save")
+        cancel_btn = QPushButton("Cancel")
+        save_btn.clicked.connect(self.accept)
+        cancel_btn.clicked.connect(self.reject)
+        btn_layout.addWidget(save_btn)
+        btn_layout.addWidget(cancel_btn)
+
+        self.layout.addRow(btn_layout)
+
+    def get_data(self):
+        return (
+            self.name_input.text(),
+            self.phone_input.text(),
+            self.department_input.text(),
+            self.tag_input.text()
+        )
+
+    def add_contact(self):
+        dialog = ContactDialog(self)
+        if dialog.exec():
+            name, phone, dept, tag = dialog.get_data()
+            if not name or not phone:
+                QMessageBox.warning(self, "Error", "Name and Phone are required!")
+                return
+            self.db.add_contact(name, phone, dept, tag)
+            self.load_contacts()
+
+    def edit_contact(self):
+        selected = self.table.currentRow()
+        if selected < 0:
+            QMessageBox.warning(self, "Error", "Select a contact to edit!")
+            return
+        contact_id = int(self.table.item(selected, 0).text())
+        contact = self.db.search_contacts(self.table.item(selected, 1).text())[0]
+
+        dialog = ContactDialog(self, contact)
+        if dialog.exec():
+            name, phone, dept, tag = dialog.get_data()
+            self.db.update_contact(contact_id, name, phone, dept, tag)
+            self.load_contacts()
+
+    def delete_contact(self):
+        selected = self.table.selectedItems()
+        if not selected:
+            QMessageBox.warning(self, "Error", "Select contacts to delete!")
+            return
+        rows = list(set(item.row() for item in selected))
+        for row in rows:
+            contact_id = int(self.table.item(row, 0).text())
+            self.db.delete_contact(contact_id)
+        self.load_contacts()
+
+    def search_contacts(self):
+        keyword = self.search_input.text().strip()
+        if keyword:
+            results = self.db.search_contacts(keyword)
+            self.load_contacts(results)
+        else:
+            self.load_contacts()
+
+    def get_selected_contacts(self):
+        selected = self.table.selectionModel().selectedRows()
+        names = []
+
+        self.setWindowTitle("WhatsApp Automation - With Contacts")
+
+        # DB manager
+        self.db = ContactsManager()
+
+        # Central Widget
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+
+        layout = QVBoxLayout(central_widget)
+
+    # -------------------- DB + UI Logic --------------------
+
+    def load_contacts(self, rows=None):
+        if rows is None:
+            rows = self.db.get_all_contacts()
+
+        self.table.setRowCount(len(rows))
+        for i, row in enumerate(rows):
+            for j, col in enumerate(row):
+                self.table.setItem(i, j, QTableWidgetItem(str(col)))
+
+
+
+
+

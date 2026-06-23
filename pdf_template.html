@@ -1,0 +1,309 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ report_type }} Report</h1>
+    <p><strong>Month:</strong> {{ month_name }}</p>
+    <p><strong>Year:</strong> {{ year }}</p>
+    <p><strong>Category:</strong> {{ category_name }}</p>
+    <p><strong>Item Type:</strong> {{ item_type_name }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for value in row.values %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>-->
+
+ 
+
+
+ <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            color: #051e35;
+            color: #ffffff;
+            color: rgb(34, 34, 252);
+            color: #d9ffcd80;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            margin: 5px 0;
+            font-size: 19px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        /* .logo-section{
+            position: relative;
+            left: 90%;
+            top: -90px;
+        }
+        .logo-section img{
+            height: 50px;
+            width: 50px;
+        } */
+        .header {
+        text-align: center;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 70px;
+        margin: 0;
+        color: rgb(6, 36, 64);
+    }
+
+    .header p {
+        margin: 5px 0;
+        font-weight: lighter;
+        font-size: 12px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: rgb(6, 36, 64);
+    }
+
+    .logo img{
+        height: 90px;
+        width: 90px;
+        position: absolute;
+        left: 30px;
+        top: 110px;
+        border-radius: 50%;
+    }
+
+    .logo button{
+        position: absolute;
+        left: 30px;
+        top: 150px;
+    }
+
+    .logo1 img{
+        height: 90px;
+        width: 90px;
+        position: absolute;
+        right: 30px;
+        top: 110px;
+        border-radius: 50%;
+    }
+
+                    QCheckBox::indicator {
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid black; /* Blue border */
+                    border-radius: 10px; /* Half of width/height for perfect circle */
+                    background-color: white;
+                }
+                QCheckBox::indicator:checked {
+                    background-color: #508fd3; /* Blue when checked */
+                }
+                QCheckBox::indicator:unchecked:hover {
+                    border: 2px solid #ffffff;
+                }
+                QCheckBox::indicator:checked:hover {
+                    background-color: #0056b3;
+                }
+                QCheckBox::indicator:checked {
+                    image: url(images\checkmark_24px.png); /* You'd provide a tick.png image */
+                    /* If using a custom image, you might need to adjust padding or other properties images\checkmark_24px.png*/
+                }
+            QDateTimeEdit {
+                background-color: #ffffff;
+                border: 1px solid #dcdfe6;
+                border-radius: 4px;
+                padding: 8px 10px;
+                color: #333333;
+                selection-background-color: #a8d9ff;
+            }
+            QDateTimeEdit::drop-down {
+                subcontrol-origin: padding;
+                subcontrol-position: top right;
+                width: 20px;
+                border-left: 1px solid #dcdfe6;
+                image: url(images/plus_48px.png); /* Optional: path to an icon */
+            }
+            QDateTimeEdit::drop-down:hover {
+                background-color: #f0f2f5;
+            }
+            QDateTimeEdit:on { /* When the calendar popup is open */
+                border: 1px solid #4a90e2;
+            }
+            QCalendarWidget {
+                border: 1px solid #dcdfe6;
+                border-radius: 4px;
+                background-color: #ffffff;
+            }
+            QCalendarWidget QAbstractItemView:enabled { /* Days in the calendar */
+                color: #333333;
+            }
+            QCalendarWidget QAbstractItemView:selected {
+                background-color: #4a90e2;
+                color: white;
+            }
+            QCalendarWidget QToolButton { /* Month/Year navigation buttons */
+                background-color: #e9ecef;
+                border: none;
+                border-radius: 3px;
+                margin: 5px;
+            }
+            QCalendarWidget QToolButton:hover {
+                background-color: #dcdfe6;
+            }
+            QCalendarWidget QToolButton::menu-indicator {
+                image: none; /* Hide default menu indicator */
+            }
+    </style>
+</head>
+<body>
+    <header>
+
+
+        <!-- <div class="logo-section">
+            <img src="" alt="logo">
+
+        </div> -->
+        <div class="header">
+            <h1>NGASSAM OPTIQUE</h1>
+            <p style="font-size: 30px;">CABINET OPTIQUE</p>
+            <p>Vente de matériel Ophtalmique médical-Verre ophtalmique - Montures de marque</p>
+            <p>N.I.U: P039116571318-RC/YAO/2023/A/351</p>
+            <p>Situé derrière ADAMAQUA PALACE - Tél.: (237) 699 67 50 25/620 37 69 28/651 63 06 45</p>
+        
+            <div class="logo">
+                <img src='temp_report.png' alt="logo">
+                
+            </div>
+            
+            <div class="logo1">
+                <img src='temp_report.png' alt="logo">
+            </div>
+        
+            <hr style="color: #000;">
+        
+            <p style="font-weight: 900; font-style: italic; font-size: 30px;color: rgb(6, 36, 64); ">Le professionnel de la santé visuelle</p>
+        </div>
+
+
+        <h1>Item Monthly Report</h1>
+        <p><strong>Month:</p>
+        <p><strong>Year</p>
+        <p><strong>Category:</p>
+        <p><strong>Item Type:</p>
+        <p><strong>Report Type:</p>
+    </header>
+
+    <div class="table-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>item type</th>
+                    <th>Categoty</th>
+                    <th>Quantity</th>
+                    <th>unit price</th>
+                    <th>Total amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+    
+            <tr>
+               <td>2</td>
+               <td>2</td>
+               <td>2</td>
+               <td>2</td>
+               <td>2</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+             </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
+
+
+
+

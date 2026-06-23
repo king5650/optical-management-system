@@ -1,0 +1,60 @@
+
+QWidget#MainWindow {
+    background-color: #86888b;
+    font-family: 'Segoe UI';
+}
+
+QFrame#container {
+    background-color: #86888b;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+QPushButton[class="tab"] {
+    background-color: transparent;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+QPushButton#activeTab {
+    background-color: #d1d9e6;
+    border-radius: 10px;
+}
+
+QPushButton[class="tab"]:hover {
+    background-color: #d1d9e6;
+}
+
+QLineEdit {
+    background-color: #e0e5ec;
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #d4d9e2;
+}
+
+QPushButton#mainBtn {
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #e0e5ec;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+}
+
+QPushButton#mainBtn:hover {
+    background-color: #d6dce4;
+}
+
+QLabel#orLabel {
+    font-size: 12px;
+    color: #666;
+}
+
+QPushButton[class="social"] {
+    background-color: #e0e5ec;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+}

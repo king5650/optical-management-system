@@ -1,0 +1,28 @@
+<RCC>
+  <qresource prefix="icon_home">
+    <file>menubar.png</file>
+    <file>images/thumb-1920-1273703.png</file>
+    <file>logo1.png</file>
+    <file>icon/activity-feed-32.ico</file>
+    <file>icon/activity-feed-48.ico</file>
+    <file>icon/cash_register_45_64px.ico</file>
+    <file>icon/cash_register_45_64px.png</file>
+    <file>icon/cash_register_64px.ico</file>
+    <file>icon/close-window-64.ico</file>
+    <file>icon/dashboard-5-32.ico</file>
+    <file>icon/dashboard-5-48.ico</file>
+    <file>icon/group-32.ico</file>
+    <file>icon/group-48.ico</file>
+    <file>icon/home-4-32.ico</file>
+    <file>icon/home-4-48.ico</file>
+    <file>icon/Logo.png</file>
+    <file>icon/menu-4-32.ico</file>
+    <file>icon/product-32.ico</file>
+    <file>icon/product-48.ico</file>
+    <file>icon/search-13-48.ico</file>
+    <file>icon/user-48.ico</file>
+    <file>icon/whatsapp_24px.png</file>
+    <file>icon/whatsapp_32px.ico</file>
+    <file>icon/whatsapp_32px.png</file>
+  </qresource>
+</RCC>

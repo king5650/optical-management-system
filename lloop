@@ -1,0 +1,292 @@
+class MedicalReportListPage(QMainWindow, Ui_MedicalReportList):
+    def __init__(self, patient_id):
+        super().__init__()
+        self.setupUi(self)
+        self.patient_id = patient_id
+
+        # Connect buttons
+        self.pushButton_add_report.clicked.connect(self.open_add_report_form)
+        self.tableWidget.cellClicked.connect(self.open_report_detail)
+
+        # Load medical reports
+        self.load_medical_reports()
+
+    def load_medical_reports(self):
+        response = requests.get(f'http://127.0.0.1:8000/medical_reports/{self.patient_id}/')
+        if response.status_code == 200:
+            reports = response.json()['medical_reports']
+            self.update_table(reports)
+        else:
+            QMessageBox.critical(self, "Error", "Failed to load medical reports.")
+
+    def update_table(self, reports):
+        self.tableWidget.setRowCount(0)
+        for report in reports:
+            row = self.tableWidget.rowCount()
+            self.tableWidget.insertRow(row)
+            self.tableWidget.setItem(row, 0, QTableWidgetItem(str(report['id'])))
+            self.tableWidget.setItem(row, 1, QTableWidgetItem(report['date']))
+            self.tableWidget.setItem(row, 2, QTableWidgetItem(report['patient']))
+
+    def open_report_detail(self, row, column):
+        report_id = self.tableWidget.item(row, 0).text()
+        self.report_form = MedicalReportForm(report_id)
+        self.report_form.show()
+        self.close()
+
+    def open_add_report_form(self):
+        self.report_form = MedicalReportForm(patient_id=self.patient_id)
+        self.report_form.show()
+        self.close()
+
+class MedicalReportForm(QMainWindow, Ui_MedicalReportForm):
+    def __init__(self, patient_id=None, report_id=None):
+        super().__init__()
+        self.setupUi(self)
+        self.patient_id = patient_id
+        self.report_id = report_id
+
+        # Connect buttons
+        self.pushButton_submit.clicked.connect(self.save_report)
+        self.pushButton_print.clicked.connect(self.print_report)
+
+        if report_id:
+            self.load_report_details()
+
+    def load_report_details(self):
+        response = requests.get(f'http://127.0.0.1:8000/medical_reports/{self.report_id}/detail/')
+        if response.status_code == 200:
+            report = response.json()['medical_report']
+            self.populate_form(report)
+        else:
+            QMessageBox.critical(self, "Error", "Failed to load report details.")
+
+    def populate_form(self, report):
+        # Populate the form fields with report details
+        self.lineEdit_age.setText(str(report['age']))
+        self.lineEdit_sexe.setText(report['sexe'])
+        self.lineEdit_profession.setText(report['profession'])
+        # (Set other fields as required...)
+
+    def save_report(self):
+        data = {
+            "patient_id": self.patient_id,
+            "age": self.lineEdit_age.text(),
+            "sexe": self.lineEdit_sexe.text(),
+            "profession": self.lineEdit_profession.text(),
+            # (Include all other fields here...)
+        }
+        response = requests.post('http://127.0.0.1:8000/medical_reports/add/', json=data)
+        if response.status_code == 200:
+            QMessageBox.information(self, "Success", "Medical report saved successfully!")
+        else:
+            QMessageBox.critical(self, "Error", "Failed to save report.")
+
+    def print_report(self):
+        # Ensure the report is saved before printing
+        if not self.report_id:
+            QMessageBox.warning(self, "Error", "Please save the report before printing.")
+            return
+        QMessageBox.information(self, "Print", "Printing report...")
+        
+        
+        
+        
+        
+        
+        prompt:
+we will work on the medical report system i have coded the ui  and converted the to a py file in this ui we have a name section to retrive stored patient. in this ui we have 3 pushbuttons , a table and a linedit(used to research):
+-view_pushbuttons: when we want to view the patient medical report attached to him, we first click on the in the table and an click on the view button which will redirect us to another page showing that medical reports he has(list patient medical report)patient details but we will just display a message "report list " for the moment. since we are still porgramming it.
+-create_medicalreportpushbuttons: this button will be use to create patient medical report and when we want to create the patient medical report we will first click on the patient and click on the button to create so it should redirct us to the medical report form to fill but for the moment we will just display a message "medical report for patient_name(here)"
+-searchPushbutton and the lineedit: wich will be used to search for patient in the table and display result.
+-table: this will be used to display the patients we have and all their datails.
+below is the converted ui to py for medical report system.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+i have this problem with my code. my system function in such a way the the user can view inventory history and even print it. when the click on the print button it should open a preview windows that will preview the document to be printed and from there the can print it out. and now i have some errors:
+PS C:\Users\falco\Desktop\system_optic>  c:; cd 'c:\Users\falco\Desktop\system_optic'; & 'c:\Users\falco\Desktop\system_optic\venv\Scripts\python.exe' 'c:\Users\falco\.vscode\extensions\ms-python.debugpy-2025.4.1-win32-x64\bundled\libs\debugpy\launcher' '55802' '--' 'c:\Users\falco\Desktop\system_optic\InventoryReportsDialog.py' 
+Traceback (most recent call last):
+  File "c:\Users\falco\Desktop\system_optic\InventoryReportsDialog.py", line 411, in render_pdf
+    page_rect = printer.pageRect()
+TypeError: QPrinter.pageRect() takes exactly one argument (0 given)
+
+my code:
+import os
+import csv
+import requests
+from datetime import datetime
+from PySide6.QtWidgets import (
+    QDialog, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, 
+    QLabel, QPushButton, QComboBox, QMessageBox
+)
+from PySide6.QtPrintSupport import QPrinter, QPrintPreviewDialog
+from PySide6.QtGui import QPainter, QTextDocument
+from PySide6.QtWidgets import QApplication
+
+BASE_URL = "http://127.0.0.1:8000/"  # Django backend
+
+
+class InventoryReportsDialog(QDialog):
+    """Dialog for generating, filtering, and printing inventory reports."""
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Inventory Reports")
+        self.setMinimumSize(900, 500)
+
+        layout = QVBoxLayout()
+
+        # 🔹 Filter Section
+        filter_layout = QHBoxLayout()
+        self.category_combo = QComboBox()
+        self.category_combo.addItem("All Categories")
+        self.fetch_categories()  # Populate categories
+
+        self.stock_level_combo = QComboBox()
+        self.stock_level_combo.addItems(["All", "Low Stock (<10)", "Out of Stock (0)"])
+
+        self.expiry_combo = QComboBox()
+        self.expiry_combo.addItems(["All", "Expired", "Expiring Soon (<30 days)"])
+
+        self.filter_button = QPushButton("Apply Filters")
+        self.filter_button.clicked.connect(self.fetch_inventory_data)
+
+        filter_layout.addWidget(QLabel("Category:"))
+        filter_layout.addWidget(self.category_combo)
+        filter_layout.addWidget(QLabel("Stock Level:"))
+        filter_layout.addWidget(self.stock_level_combo)
+        filter_layout.addWidget(QLabel("Expiry:"))
+        filter_layout.addWidget(self.expiry_combo)
+        filter_layout.addWidget(self.filter_button)
+
+        layout.addLayout(filter_layout)
+
+        # 🔹 Table Section
+        self.inventory_table = QTableWidget()
+        self.inventory_table.setColumnCount(5)
+        self.inventory_table.setHorizontalHeaderLabels(["Item Type", "Category", "Stock", "Unit Price", "Expiry Date"])
+        layout.addWidget(self.inventory_table)
+
+        # 🔹 Print Button
+        self.print_button = QPushButton("Print Inventory Report")
+        self.print_button.clicked.connect(self.preview_inventory_report)
+        layout.addWidget(self.print_button)
+
+        self.setLayout(layout)
+
+    def fetch_categories(self):
+        """Fetch categories from the backend."""
+        try:
+            response = requests.get(f"{BASE_URL}auth/categories/")
+            if response.status_code == 200:
+                categories = response.json()
+                for category in categories:
+                    self.category_combo.addItem(category["name"], category["id"])
+            else:
+                QMessageBox.warning(self, "Error", "Failed to fetch categories.")
+        except requests.RequestException as e:
+            QMessageBox.critical(self, "Network Error", str(e))
+
+    def fetch_inventory_data(self):
+        """Fetch inventory data based on filters and update the table."""
+        category_id = self.category_combo.currentData() if self.category_combo.currentIndex() > 0 else None
+        stock_filter = self.stock_level_combo.currentText()
+        expiry_filter = self.expiry_combo.currentText()
+
+        try:
+            response = requests.get(
+                f"{BASE_URL}auth/inventory-report/", 
+                params={"category_id": category_id, "stock": stock_filter, "expiry": expiry_filter}
+            )
+            data = response.json()
+
+            if response.status_code == 200 and data.get("inventory"):
+                inventory = data["inventory"]
+                self.inventory_table.setRowCount(0)
+
+                for row, item in enumerate(inventory):
+                    self.inventory_table.insertRow(row)
+                    self.inventory_table.setItem(row, 0, QTableWidgetItem(item["type__name"]))
+                    self.inventory_table.setItem(row, 1, QTableWidgetItem(item["category__name"]))
+                    self.inventory_table.setItem(row, 2, QTableWidgetItem(str(item["stock_level"])))
+
+                    # ✅ Convert unit_price to float before formatting
+                    unit_price = float(item["unit_price"])
+                    self.inventory_table.setItem(row, 3, QTableWidgetItem(f"{unit_price:,.2f} XAF"))
+
+                    expiry_date = item.get("expiry_date", "N/A")
+                    self.inventory_table.setItem(row, 4, QTableWidgetItem(expiry_date))
+
+            else:
+                QMessageBox.information(self, "No Data", "No inventory data found.")
+
+        except requests.RequestException as e:
+            QMessageBox.critical(self, "Network Error", str(e))
+
+    def preview_inventory_report(self):
+        """Generate a print preview of the inventory report."""
+        printer = QPrinter(QPrinter.HighResolution)
+        preview_dialog = QPrintPreviewDialog(printer, self)
+
+        # ✅ Fix: Correctly pass `printer` to `render_pdf`
+        preview_dialog.paintRequested.connect(self.render_pdf)
+
+        preview_dialog.exec()  # Show print preview
+
+    def render_pdf(self, printer):
+        """Render the inventory report dynamically for print preview."""
+        painter = QPainter(printer)
+        doc = QTextDocument()
+
+        # ✅ Fix: Get page dimensions correctly (No `FullPage`)
+        page_rect = printer.pageRect()
+
+        # ✅ Generate report content
+        report_html = "<h2>Inventory Report</h2>"
+        report_html += f"<p><b>Date:</b> {datetime.now().strftime('%Y-%m-%d')}</p>"
+        report_html += "<table border='1' cellspacing='0' cellpadding='5' width='100%'>"
+        report_html += "<tr><th>Item Type</th><th>Category</th><th>Stock</th><th>Unit Price</th><th>Expiry Date</th></tr>"
+
+        for row in range(self.inventory_table.rowCount()):
+            item_type = self.inventory_table.item(row, 0).text()
+            category = self.inventory_table.item(row, 1).text()
+            stock = self.inventory_table.item(row, 2).text()
+            unit_price = self.inventory_table.item(row, 3).text()
+            expiry_date = self.inventory_table.item(row, 4).text()
+            report_html += f"<tr><td>{item_type}</td><td>{category}</td><td>{stock}</td><td>{unit_price}</td><td>{expiry_date}</td></tr>"
+
+        report_html += "</table>"
+
+        # ✅ Load HTML into QTextDocument
+        doc.setHtml(report_html)
+        doc.setPageSize(page_rect.size())
+
+        # ✅ Render document to painter
+        doc.drawContents(painter)
+
+        painter.end()  # Finish painting
+
+if __name__ == "__main__":
+    app = QApplication([])
+    window = InventoryReportsDialog()
+    window.show()
+    app.exec()

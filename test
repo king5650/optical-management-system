@@ -1,0 +1,539 @@
+%PDF-1.4
+%���� ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/Contents 8 0 R /MediaBox [ 0 0 612 792 ] /Parent 7 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+5 0 obj
+<<
+/PageMode /UseNone /Pages 7 0 R /Type /Catalog
+>>
+endobj
+6 0 obj
+<<
+/Author (anonymous) /CreationDate (D:20250122101346+00'00') /Creator (ReportLab PDF Library - www.reportlab.com) /Keywords () /ModDate (D:20250122101346+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (unspecified) /Title (untitled) /Trapped /False
+>>
+endobj
+7 0 obj
+<<
+/Count 1 /Kids [ 4 0 R ] /Type /Pages
+>>
+endobj
+8 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 1114
+>>
+stream
+Gat%bhc&Mg&BE](/,&M_Td4?A[_,$=4`3LsMPDuAF>,)U/!MR')uoe.Bqg`b8P`u`QHsIC]@e:FJAa*)r*?H+/n=*N@DE$*++QMpK6RgB\Dr5fn9bYbs,35hk$Ul:8IuI^3*`&!%W2O`YAuus-^8MqJJCWU_",l4$li=cHfCH/pi:H#k&WG3gM&d]>7Ah#rX&+?AZT@9LY*f+8>hn0ijoVW-j7&'2IMlHRpg,PFt?U6(A^dZ4eQ6Nl^i#e%aQ-G8bqHD\4ClL\(aoNAF&m^?JMaP5,ZRLK.bsN6DPgW^@&i`hj""imqO5(\G8--4X1XQTJWTGif'Br+/[,=0W';L>o\$#KAIibm1DbA*p\Y1TCt^8k<smjjju!EBt:G,'JU:j.R#!f-Mtq4lu'XIb/S6OKPj.^'K]_;!d3h=ilY-\o\o$BEJ(/FTMYh9Afh'DTa-f)&1EN+#um8NWRM)>_=N^`JcJ8qP;mQ\_OVe!d8q2jp#18'fdFbnkpS&EW:<BL'Rc)Fi]!Vf08$(]07!*=#F8pDY>W)M2KW`P;9@E$^MS75q0m%^Pf5ZCgUnr2m;Q#'qm[;b3RpD0JJT:pdr^0`W)DDI2]=\0oAqVBo2hNSL0Y6pCsirn7Cm:@_:.$r(Yo,d8bT+sC5K:_%Yd2W\ql;jU28E=;f_Yt_>LupgEf@MQ>Mc!M"]T"Y8h_N-:<rlad?ub%[(K>0r.5^&J@;<6AD:,&r/r`,)Mg\UZmIuJu#Q,ADM2?7)Q6#KOV#$hOW=F+Bbo>.5OMVe9ngLo7ksD)Aa8:8Aqu0OJ$53"mF+BYf]\rVPr6dH.WOA\J,clCcc3;3YB>a2E;,'W(dbM0.MSmg8_"aAlKljA#4E2kh-Zk"r`H>)oQDt:uSf\Tc15qOfl]+b=W#a.TG0JfOQssLPH+eOEN4Y0\l/Xi+e3VL]X^WJNfs\7Df\U)J9_7XKtqNR$\U::S'"_')qXR:aY>$TdYO)L"M`H,4/$Uco)P=;7;=^30OV*"KWNq9S/.c/]=Mb2N&s#S(OB$ZJY6OY3ArFBUiLPOL?aD5jRPTgAWu]E71o$8W*aIZit=ZTl4nV$Ihg>]Co9m@FcpH?;SerB*p\L!PKXH@f~>endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000073 00000 n 
+0000000114 00000 n 
+0000000221 00000 n 
+0000000333 00000 n 
+0000000526 00000 n 
+0000000594 00000 n 
+0000000890 00000 n 
+0000000949 00000 n 
+trailer
+<<
+/ID 
+[<807fc77c9b1f8808156256ee9a3887b0><807fc77c9b1f8808156256ee9a3887b0>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 6 0 R
+/Root 5 0 R
+/Size 9
+>>
+startxref
+2154
+%%EOF
+
+
+
+
+
+
+
+
+
+
+
+from collections import defaultdict
+from PySide6.QtWidgets import QScrollArea, QVBoxLayout, QLineEdit
+from PySide6.QtCore import Qt
+
+VAT_PERCENTAGE = 19.25  # VAT Percentage
+
+class PurchaseBoardManager(QWidget, Ui_Form):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
+        self.setup_connections()
+        self.populate_category_combobox()
+        self.populate_patient_combobox()
+        self.cart = []  # Shopping cart list
+
+        # Setup scroll area for category totals
+        self.setup_scrollable_category_totals()
+
+    def setup_scrollable_category_totals(self):
+        """Make the category totals section scrollable."""
+        self.scroll_area = QScrollArea(self.ui.frame_5)
+        self.scroll_area.setWidgetResizable(True)
+
+        self.category_totals_widget = QWidget()
+        self.category_totals_layout = QVBoxLayout(self.category_totals_widget)
+        self.scroll_area.setWidget(self.category_totals_widget)
+
+        # Set layout for frame_5
+        self.ui.frame_5.setLayout(QVBoxLayout())
+        self.ui.frame_5.layout().addWidget(self.scroll_area)
+
+    def setup_connections(self):
+        """Connect signals to their respective slots."""
+        self.ui.category.currentIndexChanged.connect(self.populate_item_type_combobox)
+        self.ui.item_types.currentIndexChanged.connect(self.fetch_and_display_unit_price)
+        self.ui.patient_name.currentIndexChanged.connect(self.display_patient_details)
+        self.ui.add_to_cart.clicked.connect(self.add_to_cart)
+        self.ui.delete_from_cart.clicked.connect(self.remove_item_from_cart)
+        self.ui.amount_given.textChanged.connect(self.calculate_change)  # Real-time change calculation
+
+    @Slot()
+    def update_totals(self):
+        """Calculate and update all totals based on the shopping cart."""
+        total_amount_without_tax = 0.0
+        category_totals = defaultdict(float)
+        total_vat = 0.0
+
+        # Iterate through the cart to calculate totals
+        for item in self.cart:
+            category_name = item.get("category_name", "Unknown")
+            unit_price = item.get("unit_price", 0)
+            quantity = item.get("quantity", 0)
+            total_price = unit_price * quantity
+            vat = (total_price * VAT_PERCENTAGE) / 100
+
+            # Accumulate totals
+            total_amount_without_tax += total_price
+            category_totals[category_name] += total_price
+            total_vat += vat
+
+        # Calculate total balance (amount to be paid)
+        total_balance = total_amount_without_tax + total_vat
+
+        # Update total amount without tax
+        self.ui.total_amount_without_tax.setText(f"{total_amount_without_tax:,.2f}")
+
+        # Update VAT label
+        self.ui.total_VAT_on_items.setText(f"{total_vat:,.2f}")
+
+        # Update total balance label
+        self.ui.total_balance.setText(f"{total_balance:,.2f}")
+
+        # Dynamically update category totals
+        self.update_category_totals(category_totals)
+
+        # Recalculate change in case `amount_given` has already been entered
+        self.calculate_change()
+
+    def update_category_totals(self, category_totals):
+        """Dynamically update labels for category totals inside the scrollable area."""
+        # Clear existing labels
+        for i in reversed(range(self.category_totals_layout.count())):
+            widget = self.category_totals_layout.itemAt(i).widget()
+            if widget:
+                widget.deleteLater()
+
+        # Add new labels dynamically based on category_totals
+        for category_name, total in category_totals.items():
+            label = QLabel(f"{category_name}: {total:,.2f}")
+            label.setStyleSheet("font-size: 14px; font-weight: bold; color: #ffffff;")
+            self.category_totals_layout.addWidget(label)
+
+    @Slot()
+    def add_to_cart(self):
+        """Add the selected item type and quantity to the cart."""
+        selected_item = self.ui.item_types.currentData()
+        quantity = self.ui.quantity.text().strip()
+
+        # Validate inputs
+        if not selected_item or not isinstance(selected_item, dict):
+            QMessageBox.warning(self, "Input Error", "Please select an item type.")
+            return
+
+        if not quantity.isdigit() or int(quantity) <= 0:
+            QMessageBox.warning(self, "Input Error", "Please enter a valid quantity.")
+            return
+
+        # Ensure the unit price is available
+        unit_price = selected_item.get("unit_price")
+        if unit_price is None:
+            QMessageBox.warning(self, "Error", "Unit price not available for the selected item.")
+            return
+
+        # Get category name for the item
+        category_name = self.ui.category.currentText()
+
+        # Calculate total price
+        quantity = int(quantity)
+        total_price = unit_price * quantity
+
+        # Add to cart
+        self.cart.append({
+            "item_type": selected_item["name"],
+            "category_name": category_name,
+            "unit_price": unit_price,
+            "quantity": quantity,
+            "total_price": total_price,
+        })
+
+        # Update the cart table
+        self.update_cart_table()
+
+        # Recalculate totals
+        self.update_totals()
+
+        # Clear input fields
+        self.ui.quantity.clear()
+        self.ui.item_types.setCurrentIndex(0)
+
+    @Slot()
+    def remove_item_from_cart(self):
+        """Remove the selected item from the cart."""
+        selected_row = self.ui.tableWidget.currentRow()
+        if selected_row == -1:
+            QMessageBox.warning(self, "Selection Error", "Please select an item to remove.")
+            return
+
+        # Remove the item from the cart
+        self.cart.pop(selected_row)
+
+        # Update the cart table
+        self.update_cart_table()
+
+        # Recalculate totals
+        self.update_totals()
+
+    def update_cart_table(self):
+        """Update the cart table with items in the cart."""
+        self.ui.tableWidget.setRowCount(0)  # Clear existing rows
+
+        for row, item in enumerate(self.cart):
+            self.ui.tableWidget.insertRow(row)
+            self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(item["quantity"])))
+            self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(item["item_type"]))
+            self.ui.tableWidget.setItem(row, 2, QTableWidgetItem(f"{item['unit_price']:,.2f}"))
+            self.ui.tableWidget.setItem(row, 3, QTableWidgetItem(f"{item['total_price']:,.2f}"))
+
+    @Slot()
+    def calculate_change(self):
+        """Calculate and display the change to give based on the amount given."""
+        amount_given_text = self.ui.amount_given.text().strip()
+        total_balance_text = self.ui.total_balance.text().strip()
+
+        # Ensure valid input values
+        try:
+            amount_given = float(amount_given_text.replace(",", "")) if amount_given_text else 0.0
+            total_balance = float(total_balance_text.replace(",", "")) if total_balance_text else 0.0
+        except ValueError:
+            QMessageBox.warning(self, "Input Error", "Invalid amount entered.")
+            return
+
+        # Calculate change
+        change_to_give = amount_given - total_balance
+
+        # Update change label
+        self.ui.change_to_give.setText(f"{change_to_give:,.2f}")
+
+
+
+
+
+i want you to redesign me this interface adding animation , shadows effect and other user a smoth and soft ui/ux design likeNeumorphic Style. use the best feeting color palette :
+code:
+import sys
+import os
+import requests
+from PySide6.QtWidgets import (
+    QApplication, QWidget, QPushButton, QLineEdit, QLabel,
+    QVBoxLayout, QHBoxLayout, QFileDialog, QProgressBar, QDateTimeEdit
+)
+from PySide6.QtCore import Qt, QTimer, QDateTime
+
+BACKUP_URL = "http://127.0.0.1:8000/auth/backup/"
+RESTORE_URL = "http://127.0.0.1:8000/auth/restore/"
+
+class BackupRestoreApp(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("🔧 Backup & Restore Utility")
+        # self.setFixedWidth(500)
+        self.setup_ui()
+        self.setStyleSheet("""
+            QLineEdit {
+                background-color: white;
+                color: black;
+                font-weight: bold;
+                font-size: 14px;
+            }
+            QLabel{
+                background-color: none;
+            }
+            QPushButton {
+                background-color: #34495e;
+                border: none;
+                color: white;
+                width: 80px;
+                height: 50px;
+                spacing: 10px;
+            }
+            QPushButton:hover {
+                background-color: #e74c3c;
+            }
+            QDateTime{
+                background-color: #ecf0f1;
+                border: 1px solid #bdc3c7;
+                padding: 5px;
+                height: 900px;
+            }
+            /* QDateTimeEdit */
+            QDateTimeEdit {
+                background-color: #ffffff;
+                border: 1px solid #dcdfe6;
+                border-radius: 4px;
+                padding: 8px 10px;
+                color: #333333;
+                selection-background-color: #a8d9ff;
+            }
+            QDateTimeEdit::drop-down {
+                subcontrol-origin: padding;
+                subcontrol-position: top right;
+                width: 20px;
+                border-left: 1px solid #dcdfe6;
+                image: url(images/plus_48px.png); /* Optional: path to an icon */
+            }
+            QDateTimeEdit::drop-down:hover {
+                background-color: #f0f2f5;
+            }
+            QDateTimeEdit:on { /* When the calendar popup is open */
+                border: 1px solid #4a90e2;
+            }
+            QCalendarWidget {
+                border: 1px solid #dcdfe6;
+                border-radius: 4px;
+                background-color: #ffffff;
+                color: black;
+                font-weight: bold;
+            }
+            QCalendarWidget QAbstractItemView:enabled { /* Days in the calendar */
+                color: black;
+            }
+            QCalendarWidget QAbstractItemView:selected {
+                background-color: #4a90e2;
+                color: black;
+            }
+            QCalendarWidget QToolButton { /* Month/Year navigation buttons */
+                background-color: #e9ecef;
+                border: none;
+                border-radius: 3px;
+                margin: 5px;
+            }
+            QCalendarWidget QToolButton:hover {
+                background-color: #dcdfe6;
+            }
+            QCalendarWidget QToolButton::menu-indicator {
+                image: none; /* Hide default menu indicator */
+            }            
+        """)
+    def setup_ui(self):
+        layout = QVBoxLayout()
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setSpacing(10)
+        # --- BACKUP SECTION ---
+        layout.addWidget(QLabel("🗂 Backup System Data"))
+
+        self.backup_path_input = QLineEdit()
+        self.backup_path_input.setPlaceholderText("Backup Folder Path...")
+        btn_browse_backup = QPushButton("Browse…")
+        btn_browse_backup.clicked.connect(self.browse_backup_path)
+        # btn_browse_backup.setStyleSheet("background-color: #34495e; padding: 5px; color: black; width: 50px; height: 30px;")
+        
+        btn_create_backup = QPushButton("Create Backup")
+        btn_create_backup.clicked.connect(self.create_backup)
+       
+        
+        
+        self.lbl_backup_status = QLabel()
+        self.lbl_backup_status.setStyleSheet("color: green;")
+
+        # Layout for backup path
+        backup_path_layout = QHBoxLayout()
+        backup_path_layout.addWidget(self.backup_path_input)
+        backup_path_layout.addWidget(btn_browse_backup)
+
+        layout.addLayout(backup_path_layout)
+        layout.addWidget(btn_create_backup)
+        layout.addWidget(self.lbl_backup_status)
+
+        layout.addSpacing(20)
+
+        # --- RESTORE SECTION ---
+        layout.addWidget(QLabel("🔄 Restore System Data"))
+
+        self.restore_file_input = QLineEdit()
+        self.restore_file_input.setPlaceholderText("Select Backup File (.zip)")
+        btn_browse_restore = QPushButton("Browse…")
+        btn_browse_restore.clicked.connect(self.browse_restore_file)
+        # btn_browse_restore.setStyleSheet("background-color: #34495e; margin: 15px; color: white; width: 50px; height: 20px;")
+
+        
+        btn_restore_data = QPushButton("Restore from Backup")
+        btn_restore_data.clicked.connect(self.restore_backup)
+
+        self.lbl_restore_status = QLabel()
+        self.lbl_restore_status.setStyleSheet("color: green;")
+
+        # Layout for restore path
+        restore_path_layout = QHBoxLayout()
+        restore_path_layout.addWidget(self.restore_file_input)
+        restore_path_layout.addWidget(btn_browse_restore)
+
+        layout.addLayout(restore_path_layout)
+        layout.addWidget(btn_restore_data)
+        layout.addWidget(self.lbl_restore_status)
+
+        layout.addSpacing(20)
+
+        # --- OPTIONAL: Progress & Schedule ---
+        self.progress_bar = QProgressBar()
+        self.progress_bar.setRange(0, 100)
+        self.progress_bar.setValue(0)
+        layout.addWidget(self.progress_bar)
+
+        layout.addWidget(QLabel("🕓 Schedule Future Backup (optional)"))
+        self.scheduled_backup_time = QDateTimeEdit(QDateTime.currentDateTime())
+        self.scheduled_backup_time.setCalendarPopup(True)
+
+        self.btn_schedule_backup = QPushButton("Schedule Backup")
+        self.btn_schedule_backup.clicked.connect(self.schedule_backup)
+
+        layout.addWidget(self.scheduled_backup_time)
+        layout.addWidget(self.btn_schedule_backup)
+
+        self.setLayout(layout)
+
+    def browse_backup_path(self):
+        folder = QFileDialog.getExistingDirectory(self, "Select Backup Folder")
+        if folder:
+            self.backup_path_input.setText(folder)
+
+    def browse_restore_file(self):
+        file_path, _ = QFileDialog.getOpenFileName(self, "Select Backup File", "", "ZIP Files (*.zip)")
+        if file_path:
+            self.restore_file_input.setText(file_path)
+
+    def create_backup(self):
+        path = self.backup_path_input.text()
+        if not path:
+            self.lbl_backup_status.setText("❌ Please select a backup folder path.")
+            return
+
+        self.lbl_backup_status.setText("⏳ Creating backup...")
+        self.progress_bar.setValue(10)
+
+        try:
+            res = requests.post(BACKUP_URL, data={"path": path})
+            if res.status_code == 200:
+                file = res.json().get("file")
+                self.lbl_backup_status.setText(f"✅ Backup created at: {file}")
+                self.progress_bar.setValue(100)
+            else:
+                self.lbl_backup_status.setText(f"❌ Error: {res.json().get('error')}")
+                self.progress_bar.setValue(0)
+        except Exception as e:
+            self.lbl_backup_status.setText(f"❌ Exception: {str(e)}")
+            self.progress_bar.setValue(0)
+
+    def restore_backup(self):
+        file_path = self.restore_file_input.text()
+        if not file_path:
+            self.lbl_restore_status.setText("❌ Please select a backup file.")
+            return
+
+        self.lbl_restore_status.setText("⏳ Restoring backup...")
+        self.progress_bar.setValue(10)
+
+        try:
+            res = requests.post(RESTORE_URL, data={"file": file_path})
+            if res.status_code == 200:
+                self.lbl_restore_status.setText("✅ Restore completed successfully.")
+                self.progress_bar.setValue(100)
+            else:
+                self.lbl_restore_status.setText(f"❌ Error: {res.json().get('error')}")
+                self.progress_bar.setValue(0)
+        except Exception as e:
+            self.lbl_restore_status.setText(f"❌ Exception: {str(e)}")
+            self.progress_bar.setValue(0)
+
+    # def schedule_backup(self):
+    #     dt = self.scheduled_backup_time.dateTime().toString(Qt.ISODate)
+    #     self.lbl_backup_status.setText(f"🕓 Scheduled backup time set to: {dt}")
+    #     # Future: Implement QTimer or external cron job
+
+    def schedule_backup(self):
+        scheduled_qdatetime = self.scheduled_backup_time.dateTime()
+        now_qdatetime = QDateTime.currentDateTime()
+
+        # Calculate milliseconds until scheduled time
+        msecs_to_backup = now_qdatetime.msecsTo(scheduled_qdatetime)
+
+        if msecs_to_backup <= 0:
+            self.lbl_backup_status.setText("❌ Scheduled time is in the past. Please choose a future time.")
+            return
+
+        # Format and show scheduled time
+        dt_string = scheduled_qdatetime.toString(Qt.ISODate)
+        self.lbl_backup_status.setText(f"🕓 Scheduled backup time set to: {dt_string}")
+
+        # Schedule the backup using QTimer
+        QTimer.singleShot(msecs_to_backup, self.trigger_scheduled_backup)
+    def trigger_scheduled_backup(self):
+        self.lbl_backup_status.setText("⏳ Performing scheduled backup...")
+        try:
+            self.create_backup()  # Call your backup method here
+            self.lbl_backup_status.setText("✅ Scheduled backup completed successfully.")
+        except Exception as e:
+            self.lbl_backup_status.setText(f"❌ Backup failed: {str(e)}")
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = BackupRestoreApp()
+    window.show()
+    sys.exit(app.exec())

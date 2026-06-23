@@ -1,0 +1,60 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Build and distribution files
+build/
+dist/
+dist-1A/
+*.egg-info/
+*.egg
+web_drivers/
+
+# PyInstaller / distribution artifacts
+*.manifest
+*.spec
+
+# Qt resource build artifacts
+*.qrc~
+
+# Editor and IDE settings
+.idea/
+.vscode/
+.vscode temp/
+.qodo/
+
+# Test / cache folders
+.pytest_cache/
+.mypy_cache/
+
+# Local state files
+playwright_state.json
+whatsapp_session.json
+
+# Logs and runtime output
+*.log
+logs/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Generated output folders
+Output/
+printed_pdfs/
+
+# OS files
+.DS_Store
+Thumbs.db

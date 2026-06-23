@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="student_learning_system//user_management/static/css/font-awesome.min.css "> -->
+    <link rel="stylesheet" type="text/css" href="student_learning_system/user_management/static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="student_learning_system/user_management/static/css/brands.css">
+    <link rel="stylesheet" type="text/css" href="student_learning_system/user_management/static/css/solid.css">
+    <link rel="stylesheet" type="text/css" href="student_learning_system//user_management/static/css/fontawesome.min.css">
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f4; */
+    /* background-color: #F0F0F0; */
+    background-color: #dddce1;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #dddce1;
+    /* background-color: #F0F0F0; */
+    /* background-color: #f7f9fc; */
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
+    transition: all 0.3s ease;
+    overflow-y: auto; /* Enable scrolling */
+    
+}
+
+.sidebar .fa{
+    color: #808080;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu-item {
+    margin-bottom: 20px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    font-size: 13px;
+}
+
+.menu-item a.active, .menu-item a:hover {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.icon {
+    margin-right: 15px;
+}
+
+.dropdown .submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    margin-top: 10px;
+}
+
+.dropdown-icon {
+    margin-left: auto;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-icon {
+    transform: rotate(0deg);
+}
+.menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1000;
+    display: none;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 100%) {
+    .sidebar {
+        width: 60px;
+        padding: 20px 10px;
+    }
+
+    .menu-item a {
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .menu-item a .text {
+        display: none; /* Hide the text on small screens */
+    }
+
+    .menu-item a:hover .text {
+        display: inline-block;
+        position: absolute;
+        left: 60px;
+        background-color: #3b82f6;
+        padding: 10px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* For very small screens */
+@media screen and (max-width: 480px) {
+    .sidebar {
+        left: -250px; /* Hide sidebar */
+    }
+
+    .sidebar.active {
+        left: 0; /* Show sidebar when active */
+    }
+}
+
+/* Top Navbar */
+.top-navbar {
+    position: fixed;
+    top: 10px;
+    left: 250px;
+    height: 60px;
+    width: calc(99% - 250px);
+    /* background-color: #F0F0F0; */
+    background-color: #dddce1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
+    transition: left 0.3s ease;
+    opacity: .8;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%),
+        inset 1px 1px 1px rgb(255 255 255 / 60%),
+        inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px rgb(255 255 255 / 60%),
+        -1px -1px 4px rgb(255 255 255 / 60%), -2px -2px 8px rgb(255 255 255 / 60%),
+        1px 1px 1px rgb(12 13 18 / 6%), 1px 1px 4px rgb(12 13 18 / 6%),
+        2px 2px 8px rgb(12 13 18 / 60%);
+    
+}
+
+.sidebar.collapsed + .top-navbar {
+    left: 80px;
+    width: calc(100% - 80px);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 5px 10px;
+    background-color: #f4f4f4;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    background-color: transparent;
+    width: 200px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.navbar-icons a {
+    color: #808080;
+    font-size: 24px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+.navbar-icons .fa {
+    font-size: 17px;
+}
+.navbar-icons .fa:hover {
+    color: #3b82f6;
+}
+
+/* Main Content */
+.content {
+    margin-left: 250px;
+    margin-top: 60px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .top-navbar + .content {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+}
+
+.dashboard-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white; /* Adjust as needed */
+}
+
+.dashboard-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.dashboard-text {
+  font-weight: bold;
+}
+
+/* Notification dialog styles */
+.notification-dialog {
+    position: absolute;
+    top: 65px; /* Adjust based on navbar height */
+    right: 59px;
+    width: 320px;
+    background-color: white;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 15px;
+    z-index: 999;
+    display: none; /* Initially hidden */
+}
+
+.notification-dialog::before {
+    content: '';
+    position: absolute;
+    top: -20px;  /* Positioning the arrow */
+    right: 110px; /* Adjust this value to align with bell icon */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgb(205, 204, 204) transparent;
+    z-index: 1;
+}
+
+/* Individual notification items */
+.notification-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    cursor: progress;
+}
+
+.notification-item:hover {
+    background-color: #bbb;
+    padding: 12px;
+
+}
+
+.notification-item:last-child {
+    margin-bottom: 0;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.notification-content {
+    flex-grow: 1;
+}
+
+.notification-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.notification-subtitle {
+    font-weight: 400;
+    color: #777;
+}
+
+.notification-time {
+    display: block;
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 4px;
+}
+
+/* Show the notification dialog */
+.notification-dialog.show {
+    display: block;
+}
+
+/* Hide the notification dialog */
+.notification-dialog.hidden {
+    display: none;
+}
+
+/* setting and account */
+.popup {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  z-index: 1000;
+  width: 350px;
+  top: 70px;
+  right: 40px;
+}
+.popup h3 {
+  font-size: .9rem;
+  margin-top: 0;
+  margin-bottom: .7rem;
+  color: #333;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 8px;
+} 
+
+#settings-popup::before {
+    content: '';
+    position: absolute;
+    top: -20px;  /* Positioning the arrow */
+    right: 30px; /* Adjust this value to align with bell icon */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgb(205, 204, 204) transparent;
+    z-index: 1;
+}
+
+#account-popup::before {
+    content: '';
+    position: absolute;
+    top: -20px;  /* Positioning the arrow */
+    right: 57px; /* Adjust this value to align with bell icon */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent rgb(205, 204, 204) transparent;
+    z-index: 1;
+}
+.popup .account-section {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+.popup  .account-section h4{
+    font-size: .9rem;
+    margin-top: 0;
+    margin-bottom: .7rem;
+    color: #333;
+    padding-bottom: 8px;
+}
+
+.popup .account-section:last-child {
+  border-bottom: none;
+}
+
+/* .account-section h4 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #444;
+} */
+
+.account-section p {
+  font-size: .9rem;
+  margin: 5px 0;
+  color: #666;
+}
+
+.profile-picture {
+  text-align: center;
+  margin-bottom: .7rem;
+}
+
+.profile-picture img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  /* border: 3px solid #ddd; */
+  transition: all 0.3s ease;
+}
+
+.profile-picture img:hover {
+  border-color: #999;
+  transform: scale(1.05);
+}
+
+.btn-logout, .btn-danger {
+  width: 100%;
+  padding: 12px 0;
+  font-size: .9rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-logout {
+  background-color: #333;
+  margin-top: 20px;
+}
+
+.btn-logout:hover {
+  background-color: #444;
+}
+
+.btn-danger {
+  background-color: #ff4b5c;
+  margin-top: 20px;
+}
+
+.btn-danger:hover {
+  background-color: #e14050;
+}
+
+.account-section .highlight {
+  color: #333;
+  font-weight: bold;
+}
+.account-section h4{
+    font-size: .9rem;
+
+    margin-bottom: .2rem;
+    color: #333;
+    padding-bottom: 8px;
+}
+
+.account-section .date, .account-section .ip-address {
+  font-style: italic;
+  color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .popup {
+    width: 100%;
+    right: 0;
+    top: 50px;
+    border-radius: 0;
+  }
+
+  .btn-logout, .btn-danger {
+    font-size: 0.9rem;
+  }
+
+  .profile-picture img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+#settings-popup {
+  right: 100px; /* Adjust based on icon position */
+}
+
+#account-popup {
+  right: 30px; /* Adjust based on icon position */
+}
+
+
+/* cards */
+
+.row{
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:  100%;
+    height: 70%;
+    justify-content: space-between;
+  }
+  
+  .cards-cols{
+     /* flex-basis: 31%; */
+    background: #dddce1;/*white *#34495e rgb(193, 189, 189)*/;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    /* padding: 20px 12px ; */
+    padding: 5px;
+    box-sizing: border-box; 
+    transition: 0.5s;
+    width: 290px;
+    height: 140px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%),
+        inset 1px 1px 1px rgb(255 255 255 / 60%),
+        inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px rgb(255 255 255 / 60%),
+        -1px -1px 4px rgb(255 255 255 / 60%), -2px -2px 8px rgb(255 255 255 / 60%),
+        1px 1px 1px rgb(12 13 18 / 6%), 1px 1px 4px rgb(12 13 18 / 6%),
+        2px 2px 8px rgb(12 13 18 / 60%);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .cards-cols {
+    border-left: 4px solid #8e44ad;
+
+}
+  .cards-cols .image{
+    width: 70px;
+    height: 70px;
+    float: right;
+    margin-right: 10px;
+    border-radius: 50px;
+    background-color: white;
+    text-align: center;
+    /* justify-content: right;
+    align-items: flex; */
+  }
+
+
+  .cards-cols img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    text-align: center;
+    justify-content: center;
+    justify-content: center;
+    position: relative;
+    left: 5px;
+    top: 13px;
+  }
+  
+ .cards-cols h3{
+    /* text-align: center; */
+    font-weight: 600;
+    margin: 10px 0;
+    margin-left: 40px;
+    float: left;
+    font-size: 60px;
+    /* color: rgb(50, 72, 217); */
+    color: #34495e;
+  }
+  .cards-cols p{
+    position: relative;
+    top: 10px;
+    left: 12px;
+    /* color: rgb(8, 8, 68); */
+    color: #0e1e2d;
+    /* padding-bottom: 10px; */
+    /* margin-bottom: 10px; */
+    font-weight: 600;
+    width: 100px;
+  }
+  .cards-cols:hover{
+    transform: translateY(-15px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  }
+ .navbar-icons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    color: #808080;
+}
+/* body.light-theme {
+    background-color: #dddce1;;
+    color: #000000;
+}
+
+body.dark-theme {
+    background-color: #330044;
+    color: #ffffff;
+} */
+/* Light Theme */
+.light-theme {
+    --bg-color: #dddce1;
+    --sidebar-color: #dddce1;
+    --text-color: #333;
+    --icon-color: #808080;
+    --navbar-bg: #dddce1;
+    --input-bg: #dddce1;
+    --color: white;
+}
+
+/* Dark Theme */
+.dark-theme {
+    --bg-color: #1a1a2e;
+    --sidebar-color: #1a1a2e;/*#16213e;*/
+    --text-color: #ffffff;
+    --icon-color: #f1f1f1;
+    --navbar-bg: #0f3460;
+    --input-bg: #16213e;
+    --text-color2: white;
+    
+}
+
+/* Apply theme to elements */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.sidebar {
+    background-color: var(--sidebar-color);
+}
+
+.sidebar .fa {
+    color: var(--icon-color);
+}
+
+.menu-item a {
+    color: var(--text-color);
+}
+
+
+.top-navbar {
+    background-color: var(--navbar-bg);
+}
+
+.top-navbar .fa, .fas{
+    color: var(--icon-color);
+}
+
+.search-bar input {
+    background-color: white;
+    /* background-color: var(--input-bg); */
+    color: var(--text-color);
+}
+
+.search-bar .fa-search{
+    color: #1a1a2e;
+}
+
+.cards-cols h3, p{
+    color: var(--text-color);
+}
+.cards-cols  p{
+    color: var(--text-color);
+}
+
+
+.cards-cols{
+    background-color: var(--sidebar-color);
+    color: white;
+}
+
+
+/* button {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+} */
+
+/* Optional: Customize hover effects */
+.menu-item a:hover {
+    color: var(--icon-color);
+}
+
+/* Notification dialog styling */
+.notification-dialog {
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+}
+
+.popup {
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+}
+
+.popup h3{
+    color: var(--text-color);
+}
+
+
+.account-section  p{
+    color: var(--text-color);
+}
+
+.popup .account-section h4{
+    color: var(--text-color);
+}
+
+.navbar-icons button:hover {
+    color: #3b82f6;
+}
+
+button i {
+    font-size: 16px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: -29px;
+}
+
+.cards-container .card {
+    background-color: #dddce1;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    padding: 20px;
+    max-width: 400px;
+    height: 140px;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+    margin: 10px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 20%),
+        inset 1px 1px 1px rgb(255 255 255 / 60%),
+        inset -1px -1px 1px rgb(12 13 18 / 6%), -1px -1px 1px rgb(255 255 255 / 60%),
+        -1px -1px 4px rgb(255 255 255 / 60%), -2px -2px 8px rgb(255 255 255 / 60%),
+        1px 1px 1px rgba(242, 0, 255, 0.06), 1px 1px 4px rgb(12 13 18 / 6%),
+        2px 2px 8px rgba(178, 175, 178, 0.6);
+}
+
+.cards-container .card {
+    border-left: 4px solid #e76f51;
+}
+
+
+.cards-container .card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.cards-container .card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.cards-container .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cards-container .title {
+    font-size: 16px;
+    color: #646464;
+}
+
+.cards-container .amount {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+.cards-container .growth {
+    font-size: 16px;
+    color: #28a745;
+    margin-left: 5px;
+}
+
+.cards-container .icon-container {
+    background: linear-gradient(135deg, #8e44ad, #e74c3c);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-container .icon {
+    width: 35px;
+    height: 35px;
+}
+
+/* Add styles for different icons */
+.cards-container .card:nth-child(2) .icon-container {
+    background: linear-gradient(135deg, #3498db, #1abc9c);
+}
+
+.cards-container .card:nth-child(3) .icon-container {
+    background: linear-gradient(135deg, #f39c12, #e74c3c);
+}
+
+.cards-containers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    background-image: url('black-');
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    padding: 20px;
+    width: 400px;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+    margin: 10px;
+}
+
+.cards:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.cards-containers .text-content {
+    max-width: 220px;
+    /* height: 200px; */
+    
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #646464;
+    margin-bottom: 5px;
+}
+
+.title {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 14px;
+    color: #646464;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.read-more span {
+    margin-left: 5px;
+    transition: margin-left 0.3s ease;
+}
+
+.read-more:hover span {
+    margin-left: 10px;
+}
+
+.image-container {
+    background: linear-gradient(135deg, #8e44ad, #e74c3c);
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110%;
+    width: 40%;
+}
+
+.image {
+    width: 50px;
+    height: 50px;
+}
+
+/* Dark Theme for Second Card linear-gradient(135deg, #1d3557, #2b2d42), */
+.cards-containers  .dark-theme {
+    background: url('img.jpg') no-repeat center center;
+    background-size: cover;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 230px;
+}
+.cards.dark-theme .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Full coverage */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;  /* Ensure it stretches horizontally */
+    height: 100%; /* Ensure it stretches vertically */
+    z-index: 1; /* Ensure it's above the background image */
+}
+
+.cards.dark-theme {
+    position: relative; /* Make the parent relative for absolute positioning */
+    overflow: hidden;   /* Hide anything overflowing */
+    border-radius: 12px; /* Optional: Keep the rounded corners if needed */
+}
+
+.image-container .image {
+    width: 100%;  /* Ensure the image also spans the full width of the card */
+    height: 100%; /* Ensure the image spans the height */
+    object-fit: cover; /* Cover the entire card without distorting the image */
+    z-index: 0; /* Make sure the image stays behind the text */
+}
+
+
+.cards-containers  .dark-theme .title,
+.cards-containers  .dark-theme .description {
+    color: #ffffff;
+}
+
+.cards-containers  .dark-theme .read-more {
+    color: #ffffff;
+}
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Dabang</h2>
+        </div>
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="#" class="active">
+                    <span class="icon"><!-- 🏠 -->
+                        <i class="fa fa-home"></i>
+                    </span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="menu-item dropdown">
+                <a href="#">
+                    <span class="icon"><!--🛡️--> <i class="fas fa-folder"></i></span>
+                    Resource Management
+                    <span class="dropdown-icon"> <!--▼--><i class="fa-solid fa-chevron-circle-down"></i></span>
+                </a>
+                <ul class="submenu">
+                    <li class="menu-item"><a href="#"><span class="icon"> <i class="fas fa-question-circle"></i> </span>Questions pappers</a></li>                
+                    <li class="menu-item"><a href="#"><span class="icon"> <i class="fas fa-book-open-reader"></i> </span>Notes</a></li>                </ul>
+            </li>
+            <li class="menu-item"><a href="#"><span class="icon"><!--🛒--> <i class="fas fa-user"></i> </span>Users Management</a></li>
+            <li class="menu-item"><a href="#"><span class="icon"> <!--📦--> <i class="fas fa-building"></i>  </span>Deparments Management</a></li>
+            <li class="menu-item"><a href="#"><span class="icon"><!--📈--> <i class="fas fa-book-atlas"></i> </span>Course Management</a></li>
+            <li class="menu-item"><a href="#"><span class="icon"><!--💬--> <i class="fa-solid fa-calendar-days"></i></span> Events</a></li>
+            <li class="menu-item"><a href="#"><span class="icon"> <!--⚙️--> <i class="fa-solid fa-video"></i></span>Videos</a></li>
+            <li class="menu-item"><a href="#"><span class="icon">🚪</span>Sign Out</a></li>
+        </ul>
+    </div>
+
+    <div class="top-navbar">
+        <div class="navbar-content">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fa fa-search"></i></button>
+            </div>
+            <div class="navbar-icons">
+                <a href="#" id="notification-icon"><i class="fa fa-bell"></i></a>
+
+                <a href="#" id="settings-icon"><i class="fa fa-gear"></i></a>
+                <a href="#" id="account-icon"><i class="fa fa-user-circle"></i></a>
+                <!-- <a href="#"><i class="fa-solid fa-moon-o"></i></a> -->
+                <button id="theme-button">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Dialog Box -->
+    <div class="notification-dialog hidden" id="notification-dialog">
+        <div class="notification-item">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Avatar" class="avatar">
+            <div class="notification-content">
+                <p class="notification-title">New message <span class="notification-subtitle">from Laur</span></p>
+                <span class="notification-time">13 minutes ago</span>
+            </div>
+        </div>
+    
+        <div class="notification-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" alt="Spotify Icon" class="avatar">
+            <div class="notification-content">
+                <p class="notification-title">New album <span class="notification-subtitle">by Travis Scott</span></p>
+                <span class="notification-time">1 day ago</span>
+            </div>
+        </div>
+    
+        <div class="notification-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/1336/1336494.png" alt="Payment Icon" class="avatar">
+            <div class="notification-content">
+                <p class="notification-title">Payment successfully completed</p>
+                <span class="notification-time">2 days ago</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- the setting section -->
+    <div class="popup" id="settings-popup" style="height:300px;">
+        <h3>Settings</h3>
+        <!-- Settings content here -->
+        settings
+      </div>
+
+      <!-- the account section -->
+      <div class="popup" id="account-popup">
+        <h3>Account</h3>
+        <!-- Profile Overview -->
+        <div class="account-section">
+            <h4>Profile Overview</h4>
+            <div class="profile-picture">
+            <img src="/img.jpg" alt="Profile Picture">
+            </div>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Email:</strong> john@example.com</p>
+        </div>
+        <div class="account-section">
+            <h4>Account Status</h4>
+            <p>Status: <span class="highlight">Active</span></p>
+          </div>
+        <div class="account-section" style="display: flex;">
+            <button class="btn-logout" id="logout-btn">Log Out</button>&nbsp;&nbsp;
+            <button class="btn-danger" id="delete-account">Delete Account</button>
+        </div>
+
+      </div>
+
+    <div class="content">
+        <!-- Main content goes here -->
+        <!-- hello -->
+        <!-- <button class="dashboard-button">
+            <span class="dashboard-icon">🏠</span>
+            <span class="dashboard-text">Dashboard</span>
+          </button> -->
+
+          <div class="row">
+            <div class="cards-cols">
+                <h3>450</h3>
+                <div class="image"><i class="fa fa-users"></i><!--<img src="images/department.png">--></div>
+                <p>Users</p>
+            </div>
+            <div class="cards-cols">
+                <h3>450</h3>
+                <div class="image"><i class="fa fa-users"></i><!--<img src="images/department.png">--></div>
+                <p>Total Deparments</p>
+            </div>
+            <div class="cards-cols">
+                <h3>450</h3>
+                <div class="image"><img src="images/department.png"></div>
+                <p>Books</p>
+            </div>
+        </div>
+
+        <div class="cards-container">
+       
+            <div class="card">
+                <div class="card-content">
+                    <div class="text-content">
+                        <p class="title">Events</p>
+                        <h1 class="amount">53 00000 <span class="growth">+55%</span></h1>
+                    </div>
+                    <div class="icon-container">
+                        <img src="icon1.png" alt="Money Icon" class="icon">
+                    </div>
+                </div>
+            </div>
+    
+            
+            <div class="card">
+                <div class="card-content">
+                    <div class="text-content">
+                        <p class="title">Past Questions</p>
+                        <h1 class="amount">12 000 <span class="growth">+25%</span></h1>
+                    </div>
+                    <div class="icon-container">
+                        <img src="icon2.png" alt="Revenue Icon" class="icon">
+                    </div>
+                </div>
+            </div>
+    
+            
+            <div class="card">
+                <div class="card-content">
+                    <div class="text-content">
+                        <p class="title">PDF Notes</p>
+                        <h1 class="amount">450,000 <span class="growth">+10%</span></h1>
+                    </div>
+                    <div class="icon-container">
+                        <img src="icon3.png" alt="Profit Icon" class="icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+
+        <div class="cards-containers">
+        <!-- First Card -->
+        <div class="cards" style="height: 240px; width: 54%;">
+            <div class="text-content">
+                <p class="subtitle">Built by developers</p>
+                <h3 class="title">Soft UI Dashboard</h3>
+                <p class="description">
+                    From colors, cards, typography to complex elements, you will find the full documentation.
+                </p>
+                <a href="#" class="read-more">Read More <span>&rarr;</span></a>
+            </div>
+            <div class="image-container">
+                🚁
+                <!-- <img src="black panthar marvel hero.jpg" alt="Rocket Icon" class="image"> -->
+            </div>
+        </div>
+
+        <!-- Second Card -->
+        <div class="cards dark-theme" >
+            <div class="card-overlay">
+                <div class="text-content">
+                    <div class="title">Work with the rockets</div>
+                    <div class="description">
+                        Wealth creation is an evolutionarily recent positive-sum game. It is all about who takes the opportunity first.
+                    </div>
+                    <a href="#" class="read-more">Read More <span>→</span></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    
+
+
+    </div>
+
+    <script>
+        // Get all menu links
+const menuLinks = document.querySelectorAll('.menu-item a');
+
+// Add event listener to each link
+menuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        // Remove active class from all links
+        menuLinks.forEach(link => link.classList.remove('active'));
+
+        // Add active class to the clicked link
+        this.classList.add('active');
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const notificationIcon = document.getElementById('notification-icon');
+    const notificationDialog = document.getElementById('notification-dialog');
+    let isDialogOpen = false;
+
+    // Toggle the notification dialog
+    notificationIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent event from propagating to document
+        if (isDialogOpen) {
+            notificationDialog.classList.add('hidden');
+            isDialogOpen = false;
+        } else {
+            notificationDialog.classList.remove('hidden');
+            notificationDialog.classList.add('show');
+            isDialogOpen = true;
+        }
+    });
+
+    // Close the dialog when clicking outside of it
+    document.addEventListener('click', function(event) {
+        if (isDialogOpen && !notificationDialog.contains(event.target)) {
+            notificationDialog.classList.add('hidden');
+            notificationDialog.classList.remove('show');
+            isDialogOpen = false;
+        }
+    });
+
+    // Prevent clicks inside the notification dialog from closing it
+    notificationDialog.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeButton = document.getElementById('theme-button');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Initialize theme based on local storage or default to light theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+        updateIcon(savedTheme);
+    } else {
+        body.classList.add('light-theme'); // Default theme
+        updateIcon('light-theme');
+    }
+
+    // Toggle between themes on button click
+    themeButton.addEventListener('click', () => {
+        if (body.classList.contains('light-theme')) {
+            body.classList.replace('light-theme', 'dark-theme');
+            localStorage.setItem('theme', 'dark-theme');
+            updateIcon('dark-theme');
+        } else {
+            body.classList.replace('dark-theme', 'light-theme');
+            localStorage.setItem('theme', 'light-theme');
+            updateIcon('light-theme');
+        }
+    });
+
+    // Update the theme icon based on the current theme
+    function updateIcon(theme) {
+        if (theme === 'dark-theme') {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+    }
+});
+
+// setting and accounts
+document.addEventListener('DOMContentLoaded', function () {
+  const settingsIcon = document.getElementById('settings-icon');
+  const accountIcon = document.getElementById('account-icon');
+  const settingsPopup = document.getElementById('settings-popup');
+  const accountPopup = document.getElementById('account-popup');
+
+  // Function to toggle visibility of a popup
+  function togglePopup(popup) {
+    const isVisible = popup.style.display === 'block';
+    // Close all popups first
+    closeAllPopups();
+    // Toggle current popup
+    if (!isVisible) {
+      popup.style.display = 'block';
+    }
+  }
+
+  // Close all popups
+  function closeAllPopups() {
+    settingsPopup.style.display = 'none';
+    accountPopup.style.display = 'none';
+  }
+
+  // Toggle Settings Popup
+  settingsIcon.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevents closing when clicking on icon
+    togglePopup(settingsPopup);
+  });
+
+  // Toggle Account Popup
+  accountIcon.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevents closing when clicking on icon
+    togglePopup(accountPopup);
+  });
+
+  // Close popups when clicking outside
+  document.addEventListener('click', function () {
+    closeAllPopups();
+  });
+
+  // Prevent closing when clicking inside the popup
+  settingsPopup.addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+
+  accountPopup.addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+});
+
+    </script>
+</body>
+</html>

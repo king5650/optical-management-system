@@ -1,0 +1,252 @@
+please explain this bugs and locate the source of the bug:
+(venv) PS F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\optical> python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\threading.py", line 950, in _bootstrap_inner
+    self.run()
+  File "C:\Program Files\Python39\lib\threading.py", line 888, in run
+    self._target(*self._args, **self._kwargs)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\utils\autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\core\management\commands\runserver.py", line 133, in inner_run
+    self.check(display_num_errors=True)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\core\management\base.py", line 485, in check
+    all_issues = checks.run_checks(
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Program Files\Python39\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 790, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\optical\optical\urls.py", line 21, in <module>
+    path('auth/', include('management.urls')),
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\venv\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Program Files\Python39\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 790, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\optical\management\urls.py", line 2, in <module>
+    from . import views
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\optical\management\views.py", line 648, in <module>
+    from .serializers import (
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\optical\management\serializers.py", line 4, in <module>
+    from services.order_service import OrderService
+  File "F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\services\order_service.py", line 134, in <module>
+    from optical.management.models import Order, OrderItem
+ModuleNotFoundError: No module named 'optical.management'
+
+The key error is at the bottom of the traceback:
+
+ModuleNotFoundError: No module named 'optical.management'
+
+This means Python is trying to import:
+
+from optical.management.models import Order, OrderItem
+
+but it cannot find a package called optical.management.
+
+Trace the error backwards
+
+The import chain is:
+
+manage.py runserver
+    ↓
+optical/urls.py
+    ↓
+include('management.urls')
+    ↓
+management/urls.py
+    ↓
+from . import views
+    ↓
+management/views.py
+    ↓
+from .serializers import ...
+    ↓
+management/serializers.py
+    ↓
+from services.order_service import OrderService
+    ↓
+services/order_service.py
+    ↓
+from optical.management.models import Order, OrderItem   ← CRASH
+
+The actual failure occurs in:
+
+services/order_service.py
+line 134
+Why this happens
+
+Your project structure is probably something like:
+
+final_build_system_optic/
+│
+├── optical/
+│   ├── manage.py
+│   ├── management/
+│   │   ├── models.py
+│   │   ├── views.py
+│   │   └── serializers.py
+│   │
+│   └── optical/
+│       ├── settings.py
+│       └── urls.py
+│
+└── services/
+    └── order_service.py
+
+Notice:
+
+management/
+
+is an app beside the inner optical project package.
+
+But your code imports:
+
+from optical.management.models import Order, OrderItem
+
+which assumes this structure:
+
+optical/
+    management/
+        models.py
+
+inside the Python package optical.
+
+Python cannot find:
+
+optical.management
+
+because the app is probably registered simply as:
+
+management
+
+not
+
+optical.management
+Most likely fix
+
+Open:
+
+services/order_service.py
+
+Find:
+
+from optical.management.models import Order, OrderItem
+
+Change to:
+
+from management.models import Order, OrderItem
+
+if your app is named management.
+
+Verify the app name
+
+Look in:
+
+management/apps.py
+
+Example:
+
+class ManagementConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'management'
+
+If it says:
+
+name = 'management'
+
+then imports should be:
+
+from management.models import ...
+
+not
+
+from optical.management.models import ...
+Another possibility
+
+If your directory structure is:
+
+optical/
+    management/
+        models.py
+
+then the app may actually be inside the package.
+
+In that case verify that:
+
+optical/
+    __init__.py
+    management/
+        __init__.py
+        models.py
+
+exist.
+
+Missing __init__.py files can also make imports fail.
+
+Quick diagnostic
+
+Run from the project root:
+
+python manage.py shell
+
+and test:
+
+import management
+
+If this works:
+
+from management.models import Order
+
+then the correct import is:
+
+from management.models import Order, OrderItem
+
+If instead:
+
+import optical.management
+
+works, then the package structure is different.
+
+Exact source of the bug
+
+File
+
+services/order_service.py
+
+Line
+
+from optical.management.models import Order, OrderItem
+
+Error
+
+ModuleNotFoundError: No module named 'optical.management'
+
+The import path does not match your actual Django app/package structure. The first thing I'd inspect is your project tree (the folders containing manage.py, optical, management, and services) to determine the correct import path.

@@ -1,0 +1,1308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1134</width>
+    <height>735</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*= Style for mainwindow START
+  ==================================================== */
+	#MainWindow {
+		background-color: #fff; /*3A4250*/
+	}
+QMenuBar {
+    background-color: rgb(49, 58, 70); /* Dark background */
+    padding: 5px 10px; /* Adjust padding for better spacing */
+    color: rgb(230, 230, 230); /* Slightly softer white for text */
+    font: 575 9pt &quot;Segoe UI&quot;; /* Use a slightly lighter weight for better readability */
+    border-bottom: 1px solid rgb(60, 70, 85); /* Subtle bottom border for separation */
+}
+
+QMenuBar::item {
+    background: transparent; /* Make menu bar items transparent by default */
+    padding: 5px 15px;
+    margin: 2px 5px; /* Add some margin around items */
+    border-radius: 4px; /* Slightly rounded corners for items */
+}
+
+QMenuBar::item:selected {
+    background-color: rgba(58, 139, 212, 50); /* Secondary Blue (Medium) with slight transparency on selection */
+}
+
+QMenuBar::item:pressed {
+    background-color: rgba(15, 76, 129, 80); /* Dark Blue with slight transparency on press */
+}
+
+QMenu {
+    background-color: rgb(245, 245, 245); /* Light background for the menu */
+    border: 1px solid rgb(200, 200, 200);
+    margin: 2px; /* Small margin around the menu */
+    border-radius: 4px;
+}
+
+QMenu::item {
+    background: transparent;
+    padding: 8px 25px;
+    color: rgb(50, 50, 50);
+}
+
+QMenu::item:selected {
+    background-color: rgba(58, 139, 212, 30); /* Light highlight on selection */
+}
+
+QMenu::item:disabled {
+    color: rgb(150, 150, 150);
+}
+
+QMenu::separator {
+    height: 1px;
+    background: rgb(220, 220, 220);
+    margin: 5px 0;
+}
+
+QMenu::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QMenu::icon {
+    margin-right: 8px;
+}
+  /*QMenuBar{	
+	background-color: rgb(49, 58, 70);
+	padding: 10px;
+	color: rgb(255, 255, 255);
+	font: 700 9pt &quot;Segoe UI&quot;;
+}
+
+QMenu:hover {
+    border: 2px solid #3A8BD4; /* Secondary Blue (Medium) *
+    background-color: #E6EDF2; /* Keep background consistent on hover *
+}
+QMenu::chunk {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #3A8BD4, stop:1 #0F4C81); /* Gradient for the chunk
+    border-radius: 8px;
+   transition: background-color 0.3s ease-in-out; 
+}
+*/
+/*= END
+
+
+  ==================================================== */
+
+/*= Style for button to change menu style START
+  ==================================================== */
+	#change_btn {
+		padding: 5px;
+		border: none;
+		width: 30px;
+		height: 30px;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for header widget START
+  ==================================================== */
+	#widget {
+		background-color: #f9fafd;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for menu with icon only START
+  ==================================================== */
+  	/* style for widget */
+	#icon_only_widget {
+		background-color: #313a46;
+		width:50px;
+	}
+
+    /* style for QPushButton and QLabel */
+	#icon_only_widget QPushButton, QLabel {
+		height:50px;
+		border:none;
+		/* border-bottom: 1px solid #b0b0b0; */
+	}
+
+	#icon_only_widget QPushButton:hover {
+		background-color: rgba( 86, 101, 115, 0.5);
+	}
+	#icon_only_widget QPushButton:checked {
+		color: #fff;		
+		background-color: rgb(44, 47, 133);
+		border-radius: 20px;
+		width: 100%;
+	
+	}
+	/* style for logo image */
+	#logo_label_1 {
+		padding: 5px
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for menu with icon and text START
+  ==================================================== */
+	/* style for widget */
+	#full_menu_widget {
+		background-color: #313a46;
+	}
+
+	/* style for QPushButton */
+	#full_menu_widget QPushButton {
+		border:none;
+		border-radius: 3px;
+		text-align: left;
+		padding: 8px 0 8px 15px;
+		color: #788596;
+	}
+
+	#full_menu_widget QPushButton:hover {
+		background-color: rgba( 86, 101, 115, 0.5);
+	}
+
+	#full_menu_widget QPushButton:checked {
+		color: #fff;
+		border-radius: 10px;
+	background-color: rgb(44, 47, 133);
+	width: 2000px;
+	}
+
+	/* style for logo image */
+	#logo_label_2 {
+		padding: 5px;
+		color: #fff;
+	}
+
+	/* style for APP title */
+	#logo_label_3 {
+		padding-right: 10px;
+		color: #fff;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for search button START
+  ==================================================== */
+	#search_btn {
+		border: none;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for search input START
+  ==================================================== */
+	#search_input {
+		border: none;
+		padding: 5px 10px;
+	}
+
+	#search_input:focus {
+		background-color: #70B9FE;
+	}
+/*= END
+  ==================================================== */
+
+/*= Style for user information button START
+  ==================================================== */
+	#user_btn {
+		border: none;
+	}
+
+/*= END
+  ==================================================== */</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QWidget" name="icon_only_widget" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QPushButton" name="change_btn">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 12px;
+border: none;
+height: 40px;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+           <normaloff>:/icon/icon/menu-4-32.ico</normaloff>:/icon/icon/menu-4-32.ico</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>14</width>
+           <height>14</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="logo_label_1">
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">:/icon/icon/Logo.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="spacing">
+          <number>18</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="home_btn_1">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/home-4-32.ico</normaloff>
+             <normalon>:/icon/icon/home-4-48.ico</normalon>:/icon/icon/home-4-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="patient_form_btn_1">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/group-32.ico</normaloff>:/icon/icon/group-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="medical_prescription_btn_1">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/activity-feed-32.ico</normaloff>
+             <normalon>:/icon/icon/activity-feed-48.ico</normalon>:/icon/icon/activity-feed-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="invemtory_btn_1">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/product-32.ico</normaloff>
+             <normalon>:/icon/icon/product-48.ico</normalon>:/icon/icon/product-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="whatsapp_btn_1">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../home_icons.qrc">
+             <normaloff>:/icon_home/icon/whatsapp_32px.ico</normaloff>:/icon_home/icon/whatsapp_32px.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="sales_btn_1">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../home_icons.qrc">
+             <normaloff>:/icon_home/icon/cash_register_45_64px.ico</normaloff>:/icon_home/icon/cash_register_45_64px.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>375</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exit_btn_1">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+           <normaloff>:/icon/icon/close-window-64.ico</normaloff>:/icon/icon/close-window-64.ico</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QWidget" name="widget_3" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>236</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="currentIndex">
+          <number>8</number>
+         </property>
+         <widget class="QWidget" name="page">
+          <layout class="QGridLayout" name="gridLayout_2"/>
+         </widget>
+         <widget class="QWidget" name="page_2">
+          <layout class="QGridLayout" name="gridLayout_3"/>
+         </widget>
+         <widget class="QWidget" name="page_3">
+          <layout class="QGridLayout" name="gridLayout_4"/>
+         </widget>
+         <widget class="QWidget" name="page_4">
+          <layout class="QGridLayout" name="gridLayout_5"/>
+         </widget>
+         <widget class="QWidget" name="page_5">
+          <layout class="QGridLayout" name="gridLayout_6"/>
+         </widget>
+         <widget class="QWidget" name="page_6">
+          <layout class="QGridLayout" name="gridLayout_7"/>
+         </widget>
+         <widget class="QWidget" name="page_7">
+          <layout class="QGridLayout" name="gridLayout_8"/>
+         </widget>
+         <widget class="QWidget" name="page_9">
+          <layout class="QGridLayout" name="gridLayout_11"/>
+         </widget>
+         <widget class="QWidget" name="page_8">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10"/>
+         </widget>
+         <widget class="QWidget" name="page_10">
+          <layout class="QGridLayout" name="gridLayout_9"/>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QWidget" name="full_menu_widget" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item alignment="Qt::AlignLeft">
+        <widget class="QPushButton" name="change_btn_2">
+         <property name="minimumSize">
+          <size>
+           <width>53</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 12px;
+border: none;
+height: 40px;
+width: 40px;
+padding-left:20px;
+</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+           <normaloff>:/icon/icon/menu-4-32.ico</normaloff>:/icon/icon/menu-4-32.ico</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>14</width>
+           <height>14</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="logo_label_2">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">:/icon/icon/Logo.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="logo_label_3">
+           <property name="font">
+            <font>
+             <pointsize>15</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Sidebar</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>24</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="home_btn_2">
+           <property name="text">
+            <string>Home</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/home-4-32.ico</normaloff>
+             <normalon>:/icon/icon/home-4-48.ico</normalon>:/icon/icon/home-4-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="patient_form_btn_2">
+           <property name="text">
+            <string>Patients</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/group-32.ico</normaloff>:/icon/icon/group-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="medical_prescription_btn_2">
+           <property name="text">
+            <string>Medical Reports</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/activity-feed-32.ico</normaloff>
+             <normalon>:/icon/icon/activity-feed-48.ico</normalon>:/icon/icon/activity-feed-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="invemtory_btn_2">
+           <property name="text">
+            <string>Inventory</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+             <normaloff>:/icon/icon/product-32.ico</normaloff>
+             <normalon>:/icon/icon/product-48.ico</normalon>:/icon/icon/product-32.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="whatsapp_btn_2">
+           <property name="text">
+            <string>WhatsApp</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../home_icons.qrc">
+             <normaloff>:/icon_home/icon/whatsapp_32px.png</normaloff>:/icon_home/icon/whatsapp_32px.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="sales_btn_2">
+           <property name="text">
+            <string>Sales</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../home_icons.qrc">
+             <normaloff>:/icon_home/icon/cash_register_64px.ico</normaloff>:/icon_home/icon/cash_register_64px.ico</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>373</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exit_btn_2">
+         <property name="text">
+          <string>Exit</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc">
+           <normaloff>:/icon/icon/close-window-64.ico</normaloff>:/icon/icon/close-window-64.ico</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>14</width>
+           <height>14</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1134</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFiles">
+    <property name="title">
+     <string>Files</string>
+    </property>
+    <addaction name="actionRefresh_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport_Restore_Backup"/>
+    <addaction name="actionExport_Save_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionPrint"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionEdit"/>
+    <addaction name="actionDelete"/>
+    <addaction name="actionClear"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionToggle_Sidebar"/>
+    <addaction name="actionToggle_Theme"/>
+    <addaction name="actionhow_Dashboard_Widgets"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools </string>
+    </property>
+    <addaction name="actionWhatsApp_Automation"/>
+    <addaction name="actionInventory_Report"/>
+    <addaction name="actionSchedule_Message"/>
+    <addaction name="actionPayment_History_2"/>
+    <addaction name="actionCategory_Items"/>
+    <addaction name="actionEntry_Sales_Report"/>
+   </widget>
+   <widget class="QMenu" name="menuUser">
+    <property name="title">
+     <string>User</string>
+    </property>
+    <addaction name="actionChange_Password"/>
+    <addaction name="actionLogout"/>
+   </widget>
+   <addaction name="menuFiles"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuUser"/>
+  </widget>
+  <action name="actionRefresh_Data">
+   <property name="text">
+    <string>Refresh Data</string>
+   </property>
+  </action>
+  <action name="actionImport_Restore_Backup">
+   <property name="text">
+    <string>Import/Restore Backup</string>
+   </property>
+  </action>
+  <action name="actionExport_Save_As">
+   <property name="text">
+    <string>Export/Save As</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="text">
+    <string>Print</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionEdit">
+   <property name="text">
+    <string>Edit</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </action>
+  <action name="actionToggle_Sidebar">
+   <property name="text">
+    <string>Toggle Sidebar</string>
+   </property>
+  </action>
+  <action name="actionToggle_Theme">
+   <property name="text">
+    <string>Toggle Theme</string>
+   </property>
+  </action>
+  <action name="actionhow_Dashboard_Widgets">
+   <property name="text">
+    <string>how Dashboard Widgets</string>
+   </property>
+  </action>
+  <action name="actionWhatsApp_Automation">
+   <property name="text">
+    <string>WhatsApp Automation</string>
+   </property>
+  </action>
+  <action name="actionInventory_Report">
+   <property name="text">
+    <string>Inventory Report</string>
+   </property>
+  </action>
+  <action name="actionSchedule_Message">
+   <property name="text">
+    <string>Schedule Message</string>
+   </property>
+  </action>
+  <action name="actionChange_Password">
+   <property name="text">
+    <string>Change Password</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Logout</string>
+   </property>
+  </action>
+  <action name="actionPayment_History">
+   <property name="text">
+    <string>Payment History</string>
+   </property>
+  </action>
+  <action name="actionPayment_History_2">
+   <property name="text">
+    <string>Payment History</string>
+   </property>
+  </action>
+  <action name="actionCategory_Items">
+   <property name="text">
+    <string>Category/Items</string>
+   </property>
+  </action>
+  <action name="actionEntry_Sales_Report">
+   <property name="text">
+    <string>Entry/Sales Report</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc"/>
+  <include location="../home_icons.qrc"/>
+  <include location="../../../../Downloads/Compressed/PyQt5-Video-Book-main/#010_sidebar/resource.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>change_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>icon_only_widget</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>50</x>
+     <y>362</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>change_btn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_menu_widget</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>home_btn_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>home_btn_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>38</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>226</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>patient_form_btn_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>patient_form_btn_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>medical_prescription_btn_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>medical_prescription_btn_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>340</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>356</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>invemtory_btn_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>invemtory_btn_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>408</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>home_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>home_btn_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>52</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>patient_form_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>patient_form_btn_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>37</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>medical_prescription_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>medical_prescription_btn_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>50</x>
+     <y>340</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>invemtory_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>invemtory_btn_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>408</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exit_btn_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>187</x>
+     <y>703</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>606</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>exit_btn_1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>32</x>
+     <y>685</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>47</x>
+     <y>626</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>whatsapp_btn_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>whatsapp_btn_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>45</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>491</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>whatsapp_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>whatsapp_btn_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>208</x>
+     <y>491</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>51</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sales_btn_1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sales_btn_2</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>172</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sales_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sales_btn_1</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>161</x>
+     <y>561</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>544</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>change_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>full_menu_widget</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>209</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>change_btn_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>icon_only_widget</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>176</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>66</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

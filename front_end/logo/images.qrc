@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="logo">
+    <file>save_100px.png</file>
+    <file>print_100px.png</file>
+    <file>print_24px.png</file>
+    <file>thumb-1920-1273703.png</file>
+    <file>add_user_male_24px.png</file>
+  </qresource>
+</RCC>

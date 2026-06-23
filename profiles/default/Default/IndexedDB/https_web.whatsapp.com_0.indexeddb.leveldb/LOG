@@ -1,0 +1,24 @@
+2025/11/30-20:56:23.627 6378 Reusing MANIFEST F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\profiles\default\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/30-20:56:23.629 6378 Recovering log #89
+2025/11/30-20:56:23.659 6378 Reusing old log F:\Windows.old\Users\projects\desktop applications_systems\python pyside6\final_build_system_optic\profiles\default\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000089.log 
+2025/11/30-20:56:25.882 4f68 Level-0 table #95: started
+2025/11/30-20:56:25.895 4f68 Level-0 table #95: 186781 bytes OK
+2025/11/30-20:56:25.898 4f68 Delete type=0 #89
+2025/11/30-20:56:25.899 252c Manual compaction at level-0 from '\x00 \x00\x00\x00' @ 72057594037927935 : 1 .. '\x00!\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/11/30-20:56:25.903 252c Level-0 table #97: started
+2025/11/30-20:56:25.909 252c Level-0 table #97: 435 bytes OK
+2025/11/30-20:56:25.911 252c Delete type=0 #94
+2025/11/30-20:56:25.913 252c Manual compaction at level-0 from '\x00!\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00"\x00\x00\x00' @ 0 : 0; will stop at '\x00!\x00\x00\x05' @ 107066 : 0
+2025/11/30-20:56:25.913 252c Compacting 1@0 + 1@1 files
+2025/11/30-20:56:25.929 252c Generated table #98@0: 4565 keys, 102338 bytes
+2025/11/30-20:56:25.929 252c Compacted 1@0 + 1@1 files => 102338 bytes
+2025/11/30-20:56:25.931 252c compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/11/30-20:56:25.933 252c Delete type=2 #97
+2025/11/30-20:56:25.934 252c Manual compaction at level-0 from '\x00!\x00\x00\x05' @ 107066 : 0 .. '\x00"\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/11/30-20:56:28.583 6378 Compacting 1@1 + 1@2 files
+2025/11/30-20:56:28.645 6378 Generated table #99@1: 22942 keys, 875339 bytes
+2025/11/30-20:56:28.645 6378 Compacted 1@1 + 1@2 files => 875339 bytes
+2025/11/30-20:56:28.647 6378 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/11/30-20:56:28.649 6378 Delete type=2 #92
+2025/11/30-20:56:28.649 6378 Delete type=2 #95
+2025/11/30-20:56:28.649 6378 Delete type=2 #98

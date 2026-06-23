@@ -1,0 +1,20 @@
+Month,January
+Year,2025
+Category,All Categories
+Item Type,All Item Types
+Report Type,Entries
+
+Item Type,Category,Stock Level,Unit Price,Total Value
+progressive stock,Lens,2,90000.00,180000.00
+VIP+,Frame,12,1000.00,12000.00
+ISPA,School,9,5000.00,45000.00
+hope,Optical Accessory,12,8000.00,96000.00
+VIP,Frame,12,2000.00,24000.00
+CLASSIC,Frame,10,5000.00,50000.00
+FRAMES XXX,Frame,11,5000.00,55000.00
+VIP++s,Frame,2,12.00,24.00
+progressive stock,Lens,2,90000.00,180000.00
+ISPA,School,2,1000.00,2000.00
+APPARTMENT,Houses,9,5000.00,45000.00
+VIP++,Frame,12,10000.00,120000.00
+VIP++,Frame,0,1000.00,0.00

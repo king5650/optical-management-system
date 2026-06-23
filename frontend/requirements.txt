@@ -1,0 +1,5 @@
+# Frontend dependencies
+# Install with:  pip install -r requirements.txt
+
+PySide6>=6.6.0       # Qt bindings for Python — UI framework
+requests>=2.31.0     # HTTP client — all API calls go through this
